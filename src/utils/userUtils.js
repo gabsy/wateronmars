@@ -1,0 +1,26 @@
+function checkUserRole(session) {
+	if (
+		!session ||
+		!session.user ||
+		!session.user.organizationMemberships ||
+		session.user.organizationMemberships.length === 0
+	) {
+	// Return null if the user is not a basic member
+		return null;
+	}
+  
+	const organizationMemberships = session.user.organizationMemberships;
+  
+	// Loop through all organization memberships
+	for (const membership of organizationMemberships) {
+		if (membership.role) {
+			// Return the role in lowercase if it exists
+			return membership.role.toLowerCase();
+		}
+	}
+  
+	// Return null if no role is found in the memberships
+	return null;
+}
+
+export { checkUserRole };
