@@ -3,15 +3,19 @@ import {
 	XAxis,
 	YAxis,
 	Tooltip,
-	AreaChart,
-	Area,
+	// AreaChart,
+	// Area,
+	BarChart,
+	Bar,
+	Legend,
+	Rectangle,
 	ResponsiveContainer,
 } from 'recharts';
 
 const Chart = ({ data }) => {
 	return (
-		<div className="text-xs">
-			<ResponsiveContainer width="100%" height={340}>
+		<div className="text-xs color-red w-3/5">
+			{/* <ResponsiveContainer width="100%" height={280}>
 				<AreaChart
 					data={data}
 					margin={{ top: 10, right: 0, left: -24, bottom: 0 }}
@@ -44,6 +48,27 @@ const Chart = ({ data }) => {
 						fill="url(#colorPv)"
 					/>
 				</AreaChart>
+			</ResponsiveContainer> */}
+			<ResponsiveContainer width="100%" height={320}>
+				<BarChart
+				data={data}
+				width="100%"
+				margin={{ top: 16, right: 0, left: -24, bottom: 0 }}
+				>
+				<CartesianGrid strokeDasharray="3 3" />
+				<XAxis dataKey="name" stroke="#bbb"/>
+				<YAxis
+						stroke="#bbb"
+						label={{
+							value: 'Consumption (mc)',
+							angle: -90,
+							position: 'center',
+						}}
+					/>
+				<Tooltip cursor={{fill: 'transparent'}}/>
+				<Legend />
+				<Bar dataKey="mc" fill="#617AFF" barSize={20} radius={[20, 20, 0, 0]} activeBar={<Rectangle fill="#617AFF"/>} />
+				</BarChart>
 			</ResponsiveContainer>
 		</div>
 	);

@@ -49,7 +49,8 @@ const GeneralStats = () => {
 		},
 	];
 	return (
-		<div className="general-stats flex flex-col gap-10">
+		// <div className="general-stats flex gap-8 rounded-xl  bg-wom-grayMediumLight p-8 lg:p-12 shadow-gray-200 shadow-md">
+		<div className="general-stats flex gap-8">
 			<OverviewStats />
 			<Chart data={chartData} />
 		</div>

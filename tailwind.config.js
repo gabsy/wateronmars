@@ -2,7 +2,14 @@
 export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
+
 		extend: {
+			fontFamily: {
+				'sans': 'Inter, Helvetica, Arial, sans-serif',
+			},
+			fontWeight: {
+				default: 200,
+			},
 			colors: {
 				wom: {
 					primary: '#617AFF',
@@ -16,5 +23,11 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		function({ addBase, config }) {
+			addBase({
+				'body': { fontWeight: config('theme.fontWeight.default') },
+			});
+		},
+	],
 };

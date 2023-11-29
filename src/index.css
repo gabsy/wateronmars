@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form {
+	@apply max-w-xl;
+
+	& > div {
+		@apply mb-8;
+	}
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+	@apply border rounded w-full font-normal py-3 px-2.5 focus:border-wom-primary focus:outline-none;
+	
+	& + .error {
+		@apply w-full text-red-600 text-sm mt-2;
+	}
+}
+
+.select-indicator {
+	@apply absolute top-0 right-10 bottom-0 flex items-center px-2 pointer-events-none;
+}
+
+label {
+	@apply block text-gray-700 font-semibold mb-2;
+}
+
+/* Button component */
+.btn {
+	@apply bg-wom-primary text-white py-2 px-6 rounded-md focus:ring-4 focus:ring-blue-300 transition duration-200 ease-in-out;
+
+	&.btn-smaller {
+		@apply py-0.5 px-3 text-sm rounded-full;
+	}
+
+	&.btn-outline {
+		@apply bg-transparent border border-gray-700 text-gray-700 hover:bg-transparent hover:border-wom-primary hover:text-wom-primary;
+	}
+}
+
+.btn:hover {
+	@apply bg-blue-700;
+}

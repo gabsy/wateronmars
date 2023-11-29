@@ -3,9 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import useGlobalContext from '../hooks/useGlobalContext';
 import api from '../api/defaults';
 import * as yup from 'yup';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
-const AddReadingForm = () => {
+const AddApartmentForm = () => {
     const { apartments } = useGlobalContext();
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -40,9 +39,9 @@ const AddReadingForm = () => {
         }
         
         // API call to insert new reading
-        const addReading = async () => {
+        const addApartment = async () => {
             try {
-                const response = await api.post('/addReading', readingData);
+                const response = await api.post('/apartments', readingData);
                 setIsSubmitted(true);
                 console.log(response.data);
             }
@@ -50,7 +49,7 @@ const AddReadingForm = () => {
                 console.error('Error:', error);
             }
         }
-        addReading();
+        addApartment();
     };
 
     return (
@@ -72,7 +71,7 @@ const AddReadingForm = () => {
                             <div>
                                 <label htmlFor="apartmentId">Apartment No.</label>
                                 <Field
-                                    as="select"
+                                    component="select"
                                     id="apartmentId"
                                     name="apartmentId"
                                 >
@@ -92,7 +91,7 @@ const AddReadingForm = () => {
                             <div>
                                 <label htmlFor="month">Email</label>
                                 <Field
-                                    as="select"
+                                    component="select"
                                     id="month"
                                     name="month"
                                 >
@@ -156,13 +155,12 @@ const AddReadingForm = () => {
                 </Formik>
             )}
             {isSubmitted && (
-                <div className="text-green-500 text-xl text-center">
-                    <CheckCircleIcon className="w-20 h-20 align-top mb-5 mx-auto" />
-                    <p>Reading added successfully!</p>
+                <div className="text-green-500 font-bold text-xl">
+                    <p>Apartment added successfully!</p>
                 </div>
             )}
         </>
     )
 }
 
-export default AddReadingForm
+export default AddApartmentForm

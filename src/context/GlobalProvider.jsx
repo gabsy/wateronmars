@@ -1,8 +1,9 @@
 // import context api resources
 import { createContext, useState, useEffect } from 'react';
-import { useUser, useSession } from '@clerk/clerk-react';
+import { useUser, useSession, useAuth } from '@clerk/clerk-react';
 import api from '../api/defaults';
 import { checkUserRole } from '../utils/userUtils';
+import Loader from '../components/Loader';
 
 // Create context
 export const GlobalContext = createContext();
@@ -12,9 +13,10 @@ export const GlobalContextProvider = ({ children }) => {
     const { user, isSignedIn } = useUser();
     const [ apartments , setApartments ] = useState([]);
     const [ apartment, setApartment ] = useState();
-    const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(true);
     const { session } = useSession();
     const userRole = checkUserRole(session);
+    const { getToken } = useAuth();
 
     useEffect(() => {
 		if(isSignedIn) {
@@ -29,16 +31,17 @@ export const GlobalContextProvider = ({ children }) => {
 					
                     const userApartment = response.data.filter(apartment => apartment.user_email === userEmail);
 					setApartment(userApartment[0]);
-                    
-                    setIsLoaded(true);
+
 				} catch (error) {
 					console.error('Error:', error);
-				}
+				} finally {
+                    setIsLoading(false);
+                }
 			}
 			
 			fetchApartments();
 		}
-	}, [isSignedIn, user, userRole]);
+	}, [isSignedIn, user, getToken]);
 
     return (
         <GlobalContext.Provider value={{
@@ -49,7 +52,10 @@ export const GlobalContextProvider = ({ children }) => {
             setApartments,
             userRole,
         }}>
-            {isLoaded && children}
+            {isSignedIn && isLoading ?
+            <Loader />
+            : children
+            }
         </GlobalContext.Provider>
     );
 }
