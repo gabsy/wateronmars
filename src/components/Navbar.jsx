@@ -13,7 +13,7 @@ const Navbar = () => {
 	const condoLocation = import.meta.env.VITE_LOCATION;
 
 	return (
-		<div className="max-w-screen-2xl bg-white mx-auto rounded-xl mb-4 shadow">
+		<div className="max-w-screen-2xl bg-white mx-auto rounded-md mb-4 shadow">
 			<nav className="flex justify-between items-center py-6 px-12">
 				<div className="logo flex-1">
 					<Link to="/">

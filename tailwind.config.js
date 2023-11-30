@@ -18,7 +18,7 @@ export default {
 					grayMediumLight: 'rgba(246, 248, 255, 0.70)',
 					green: '#49A18C',
 					greenLight: '#D2EEDB',
-					bgGlobal: '#e8eff6',
+					bgGlobal: '#D9EBFC',
 				},
 			},
 		},

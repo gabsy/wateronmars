@@ -17,7 +17,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 const App = () => {
 
 	return (
-		<div className="bg-wom-bgGlobal bg-[url('bg-image3.jpg')] bg-cover min-h-screen pt-10 pb-16 px-5">
+		// <div className="bg-wom-bgGlobal bg-[url('bg-image3.jpg')] bg-cover min-h-screen pt-10 pb-16 px-5">
+		<div className="bg-wom-bgGlobal bg-cover min-h-screen pt-10 pb-16 px-5">
 			<Router>
 				<SignedIn>
 					<ProtectedRoute allowedRoles={['admin']}>
