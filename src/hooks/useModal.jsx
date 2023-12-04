@@ -7,11 +7,13 @@ const useModal = () => {
 	const openModal = useCallback((modalType) => {
 		setIsOpen(true);
 		setSelectedModal(modalType);
+		document.body.classList.add('active-modal');
 	}, []);
 
-	const closeModal = useCallback((modalType) => {
+	const closeModal = useCallback(() => {
 		setIsOpen(false);
-		setSelectedModal(modalType);
+		setSelectedModal(null);
+		document.body.classList.remove('active-modal');
 	}, []);
 
 	return {

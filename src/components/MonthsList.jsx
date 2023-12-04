@@ -13,7 +13,7 @@ const MonthsList = () => {
 			// Simulate longer loading time for demo purposes.
 			setTimeout(() => {
 				setIsLoaded(true);
-			}, 3000);
+			}, 1500);
 		}
 	}, [consumptions]);
 
