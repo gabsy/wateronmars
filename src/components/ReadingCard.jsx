@@ -3,10 +3,8 @@ import iconCheck from '../assets/icons/icon-check.svg';
 import iconDrop from '../assets/icons/icon-drop.svg';
 import { formatDate } from '../utils/formatDate';
 
-const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
+const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 	const isPaid = paid;
-	// const isPaidBg = isPaid ? 'bg-wom-grayMediumLight' : 'bg-wom-grayLight';
-	const isPaidBg = 'bg-wom-grayMediumLight';
 	const isPaidIcon = isPaid ? iconCheck : iconFlag;
 	const isPaidIconBg = isPaid ? 'bg-wom-primary' : 'bg-red-600';
 	const isPaidIconHallow = isPaid ? 'bg-wom-grayMedium' : 'bg-red-100';
@@ -20,7 +18,7 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 
 	return (
 		<>
-			<div className={`flex flex-col gap-6 p-6 rounded-lg shadow-md hover:scale-105 transition-all duration-300 ${isPaidBg}`}>
+			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 transition-all duration-300">
 				<div className="flex justify-between items-start">
 					<div className="flex gap-3 items-center">
 						<div className={`rounded-full p-2 ${isPaidIconHallow}`}>
@@ -35,7 +33,7 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 						</h3>
 					</div>
 					<div
-						className="flex text-xs gap-2 items-center rounded-full px-3 py-1 mt-2 bg-black text-white">
+						className="flex text-xs gap-2 items-center rounded-full px-3 py-1 mt-2 bg-gray-600 text-white">
 						{monthShort} {year}
 					</div>
 				</div>
@@ -62,13 +60,13 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 						</p>
 					</div>
 				</div>
-				<div className="flex justify-between items-end pt-6 border-t border-gray-200">
-					<div className="uppercase leading-none text-xs">Total amount</div>
+				<div className="flex items-end justify-end gap-4 pt-5 border-t border-gray-200">
+					<div className="uppercase text-xs mr-1">Total amount:</div>
 					<div
-						className={`uppercase leading-none text-2xl font-semibold text-wom-primary ${isPaidText}`}
+						className={`uppercase leading-none text-3xl font-semibold ${isPaidText}`}
 					>
 						{totalDue}
-						<span className="text-sm font-normal">.00 RON</span>
+						<span className="text-sm font-normal leading-none">.00 RON</span>
 					</div>
 				</div>
 			</div>
@@ -76,4 +74,4 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 	);
 };
 
-export default MonthCard;
+export default ReadingCard;

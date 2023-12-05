@@ -1,12 +1,12 @@
 import GeneralStats from '../components/GeneralStats';
-import MonthsList from '../components/MonthsList';
+import ReadingsList from '../components/ReadingsList';
 import PageContainer from '../components/PageContainer';
 
 const Home = () => {
 	return (
 		<PageContainer>
 			<GeneralStats />
-			<MonthsList />
+			<ReadingsList />
 		</PageContainer>
 	);
 };

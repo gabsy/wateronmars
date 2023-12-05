@@ -9,7 +9,7 @@ const ApartmentsList = () => {
 
 	return (
 		<>
-			<div className="grid grid-flow-row grid-cols-3 gap-11">
+			<div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{ apartments.length > 0 && (
 					apartments.map((apartment) => {
 						return (

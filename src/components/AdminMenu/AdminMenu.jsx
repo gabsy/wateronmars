@@ -11,7 +11,7 @@ const AdminMenu = () => {
 	const { isOpen, openModal, closeModal, selectedModal } = useModal();
 
 	return (
-		<div className="max-w-screen-2xl mx-auto pb-8 flex justify-center gap-6">
+		<div className="max-w-screen-2xl mx-auto px-6 pb-8 flex justify-end gap-6">
 				{/* Link to apartments list page */}
 				<Link to="/apartments" className="text-wom-primary hover:underline font-normal">
 					<BuildingOfficeIcon className="h-5 w-5 inline-block align-top mr-2" />

@@ -5,6 +5,7 @@ import { MapPinIcon } from '@heroicons/react/24/outline';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
 import useGlobalContext from '../hooks/useGlobalContext';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
 	const { user, isSignedIn } = useUser();
@@ -13,8 +14,15 @@ const Navbar = () => {
 	const condoLocation = import.meta.env.VITE_LOCATION;
 
 	return (
-		<div className="max-w-screen-2xl bg-white mx-auto rounded-md mb-4 shadow">
-			<nav className="flex justify-between items-center py-6 px-12">
+		<motion.div
+			className="max-w-screen-2xl mx-auto mb-4"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{
+				duration: 0.5,
+			}}
+		>
+			<nav className="flex justify-between items-center pt-6 px-2 pb-4">
 				<div className="logo flex-1">
 					<Link to="/">
 						<img src={logo} alt="WaterOnMars" className="w-44" />
@@ -50,7 +58,7 @@ const Navbar = () => {
 					</>
 				)}
 			</nav>
-		</div>
+		</motion.div>
 	);
 };
 

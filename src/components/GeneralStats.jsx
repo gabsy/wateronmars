@@ -1,5 +1,6 @@
 import Chart from './Chart';
 import OverviewStats from './OverviewStats';
+import { motion } from 'framer-motion';
 
 const GeneralStats = () => {
 	const chartData = [
@@ -49,11 +50,17 @@ const GeneralStats = () => {
 		},
 	];
 	return (
-		// <div className="general-stats flex gap-8 rounded-xl  bg-wom-grayMediumLight p-8 lg:p-12 shadow-gray-200 shadow-md">
-		<div className="general-stats flex gap-8">
+		<motion.div
+			className="general-stats flex gap-8 p-6 lg:px-10 lg:pt-14 lg:pb-12 mb-10 lg:mb-16 bg-white rounded-3xl"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{
+				duration: 0.5,
+			}}
+		>
 			<OverviewStats />
 			<Chart data={chartData} />
-		</div>
+		</motion.div>
 	);
 };
 
