@@ -27,7 +27,7 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 							<img
 								src={isPaidIcon}
 								alt="icon flag"
-								className={`rounded-full p-3 ${isPaidIconBg}`}
+								className={`rounded-full p-2 ${isPaidIconBg}`}
 							/>
 						</div>
 						<h3 className="font-semibold text-lg leading-tight whitespace-pre-line">
@@ -35,9 +35,7 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 						</h3>
 					</div>
 					<div
-						className={`flex text-xs gap-2 items-center rounded-full px-3 py-1 mt-2
-						${isPaid ? 'bg-black text-white' : 'bg-red-100 text-red-600'}`}
-					>
+						className="flex text-xs gap-2 items-center rounded-full px-3 py-1 mt-2 bg-black text-white">
 						{monthShort} {year}
 					</div>
 				</div>
@@ -67,7 +65,7 @@ const MonthCard = ({month, year, reading, readingDate, paid, prevReading }) => {
 				<div className="flex justify-between items-end pt-6 border-t border-gray-200">
 					<div className="uppercase leading-none text-xs">Total amount</div>
 					<div
-						className={`uppercase leading-none text-2xl font-medium ${isPaidText}`}
+						className={`uppercase leading-none text-2xl font-semibold text-wom-primary ${isPaidText}`}
 					>
 						{totalDue}
 						<span className="text-sm font-normal">.00 RON</span>

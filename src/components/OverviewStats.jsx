@@ -2,7 +2,7 @@ import { BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import useGlobalContext from '../hooks/useGlobalContext';
 
 const OverviewStats = () => {
-	const aptNumber = useGlobalContext().apartment.apartment_no;
+	const aptNumber = useGlobalContext().apartment.apartmentNo;
 	const owner = useGlobalContext().user.fullName;
 	const overdue = true;
 	const consumption = 9;
@@ -12,7 +12,7 @@ const OverviewStats = () => {
 
 
 	return (
-		<div className="flex flex-col w-2/5 gap-24 mb-8 items-start">
+		<div className="flex flex-col w-2/5 gap-20 mb-8 items-start">
 			<div className="flex flex-row-reverse pb-10 lg:pb-0 w-full justify-between md:justify-start md:flex-row items-start gap-5">
 				<BuildingOfficeIcon className="h-10 w-10 stroke-black"/>
 				<div className="pt-0.5">
@@ -27,26 +27,26 @@ const OverviewStats = () => {
 			</div>
 			<div className="flex flex-wrap md:flex-nowrap justify-between w-full lg:w-1/2 gap-x-5 gap-y-5 sm:gap-y-0 md:gap-x-16">
 				<div>
-					<p className="text-sm text-gray-500 pb-2 sm:pb-3 leading-1">
+					<p className="text-sm pb-2 sm:pb-3 leading-1">
 						Last index reading
 					</p>
-					<h3 className="text-2xl md:text-3xl whitespace-nowrap font-semibold">{lastIndex}</h3>
+					<h3 className="text-3xl md:text-3xl whitespace-nowrap font-semibold">{lastIndex}</h3>
 				</div>
 				<div className="lg:pl-10 lg:border-l border-gray-200">
-					<p className="text-sm text-gray-500 pb-2 sm:pb-3 leading-1">
+					<p className="text-sm pb-2 sm:pb-3 leading-1">
 						Last consumption
 					</p>
-					<h3 className="text-2xl md:text-3xl whitespace-nowrap font-semibold">
+					<h3 className="text-3xl md:text-3xl whitespace-nowrap font-bold">
 						{consumption}
 						<span className="text-base font-normal"> mc</span>
 					</h3>
 				</div>
 				<div className="lg:pl-10 lg:border-l border-gray-200">
-					<p className="text-sm text-gray-500 pb-2 sm:pb-3 leading-1">
+					<p className="text-sm pb-2 sm:pb-3 leading-1">
 						Total<br/> due amount
 					</p>
 					<h3
-						className={`text-2xl md:text-3xl whitespace-nowrap font-semibold ${
+						className={`text-3xl md:text-3xl whitespace-nowrap font-semibold ${
 							overdue ? 'text-red-600' : ''
 						}`}
 					>

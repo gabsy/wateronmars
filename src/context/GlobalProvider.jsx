@@ -12,6 +12,7 @@ export const GlobalContext = createContext();
 export const GlobalContextProvider = ({ children }) => {
     const { user, isSignedIn } = useUser();
     const [ apartments , setApartments ] = useState([]);
+    const [ readings , setReadings ] = useState([]);
     const [ apartment, setApartment ] = useState();
     const [ isLoading, setIsLoading ] = useState(true);
     const { session } = useSession();
@@ -24,13 +25,16 @@ export const GlobalContextProvider = ({ children }) => {
             const userEmail = user.emailAddresses[0].emailAddress;
 
 			// Fetch apartments from API.
-			const fetchApartments = async () => {
+			const fetchData = async () => {
 				try {
-					const response = await api.get('/apartments');
-                    setApartments(response.data);
+					const apartmentsData = await api.get('/apartments');
+                    setApartments(apartmentsData.data);
 					
-                    const userApartment = response.data.filter(apartment => apartment.user_email === userEmail);
+                    const userApartment = apartmentsData.data.filter(apartment => apartment.ownerEmail === userEmail);
 					setApartment(userApartment[0]);
+
+                    const readingsData = await api.get('/readings');
+                    setReadings(readingsData.data);
 
 				} catch (error) {
 					console.error('Error:', error);
@@ -39,7 +43,7 @@ export const GlobalContextProvider = ({ children }) => {
                 }
 			}
 			
-			fetchApartments();
+            fetchData();
 		}
 	}, [isSignedIn, user, getToken]);
 
@@ -51,6 +55,7 @@ export const GlobalContextProvider = ({ children }) => {
             apartments,
             setApartments,
             userRole,
+            readings,
         }}>
             {isSignedIn && isLoading ?
             <Loader />

@@ -8,7 +8,7 @@ export default {
 				'sans': 'Inter, Helvetica, Arial, sans-serif',
 			},
 			fontWeight: {
-				default: 200,
+				default: 400,
 			},
 			colors: {
 				wom: {

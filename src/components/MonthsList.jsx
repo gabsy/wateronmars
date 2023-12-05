@@ -5,24 +5,32 @@ import { motion } from 'framer-motion';
 import MonthCardPlaceholder from './MonthCardPlaceholder';
 
 const MonthsList = () => {
-	const consumptions = useGlobalContext().apartment.consumptions;
 	const [isLoaded, setIsLoaded] = useState(false);
+	const readings = useGlobalContext().readings;
+	const apartment = useGlobalContext().apartment;
+	const apartmentId = apartment._id;
 
+	// Filter readings by apartment id and sort by readingDate
+	const filteredReadings = readings.filter(reading => reading.apartmentId === apartmentId);
+	readings.sort((a, b) => new Date(b.readingDate) - new Date(a.readingDate));
+
+	// Set isLoaded to true when readings are fetched
 	useEffect(() => {
-		if(consumptions.length > 0) {
+		if(filteredReadings.length > 0) {
 			// Simulate longer loading time for demo purposes.
 			setTimeout(() => {
 				setIsLoaded(true);
 			}, 1500);
 		}
-	}, [consumptions]);
+	}, [filteredReadings]);
 
+	// Create placeholder array for loading animation
 	const cardLoadingPlaceholder = [];
-
 	for (let i = 0; i < 6; i++) {
 		cardLoadingPlaceholder.push(i);
 	}
-
+	
+	// Framer motion variants
 	const listContainer = {
 		hidden: { opacity: 1 },
 		visible: { opacity: 1, transition: { staggerChildren: 0.09 } },
@@ -55,21 +63,22 @@ const MonthsList = () => {
 				animate={isLoaded ? 'visible' : 'hidden'}
 			>
 				{ isLoaded && (
-					consumptions.map((consumption, index) => {
+					filteredReadings.map((reading, index) => {
 						// Get previous reading index for consumption calculation
-						const prevReading = index + 1 < consumptions.length ? consumptions[index + 1]?.reading : 0;
+						const prevReading = index + 1 < filteredReadings.length ? filteredReadings[index + 1] : 0;
 
 						return (
 							<motion.div key={index}
 								variants={listItem}
 							>
 								<MonthCard
-									month={consumption.month}
-									year={consumption.year}
-									prevReading={prevReading}
-									reading={consumption.reading}
-									readingDate={consumption.reading_date}
-									paid={consumption.paid}
+									month={reading.month}
+									year={reading.year}
+									prevReading={prevReading.reading}
+									reading={reading.reading}
+									readingDate={reading.readingDate}
+									paid={reading.paid}
+									// paid = {true}
 								/>
 							</motion.div>
 						)

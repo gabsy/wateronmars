@@ -1,47 +1,35 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import useGlobalContext from '../hooks/useGlobalContext';
 import api from '../api/defaults';
 import * as yup from 'yup';
 
 const AddApartmentForm = () => {
-    const { apartments } = useGlobalContext();
+    // const { apartments } = useGlobalContext();
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // Validation Schema
     const validationSchema = yup.object().shape({
-        apartmentId: yup.string().required('Apartment No. is required'),
-        month: yup.string().required('Month is required'),
-        year: yup.string().required('Year is required'),
-        reading: yup.number().positive().integer().required("Index value is required"),
-        readingDate: yup.string().required('Reading Date is required'),
+        apartmentNo: yup.number().required('Apartment No. is required'),
+        ownerEmail: yup.string().email().required('Owner email is required'),
+        ownerName: yup.string().required('Owner name is required'),
     });
-
-    // Get previous month
-    const currentDate = new Date();
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    const previousMonth = currentDate.toLocaleString('default', { month: 'short' });
 
     // Handle Submit function
     const handleSubmit = async (values) => {
-        const apartmentId = values.apartmentId;
-        const month = values.month;
-        const year = values.year;
-        const reading = values.reading;
-        const readingDate = values.readingDate;
+        const apartmentNo = values.apartmentNo;
+        const ownerEmail = values.ownerEmail;
+        const ownerName = values.ownerName;
 
         const readingData = {
-            apartmentId,
-            month,
-            year,
-            reading,
-            readingDate,
+            apartmentNo,
+            ownerEmail,
+            ownerName,
         }
         
         // API call to insert new reading
         const addApartment = async () => {
             try {
-                const response = await api.post('/apartments', readingData);
+                const response = await api.post('/addApartment', readingData);
                 setIsSubmitted(true);
                 console.log(response.data);
             }
@@ -57,11 +45,9 @@ const AddApartmentForm = () => {
             {!isSubmitted && (
                 <Formik
                     initialValues={{
-                        apartmentId: '',
-                        month: previousMonth,
-                        year: new Date().getFullYear().toString(),
-                        reading: '',
-                        readingDate: new Date().toISOString().slice(0, 10),
+                        apartmentNo: '',
+                        ownerName: '',
+                        ownerEmail: '',
                     }}
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}
@@ -69,87 +55,42 @@ const AddApartmentForm = () => {
                     {({ errors, touched }) => (
                         <Form className="form">
                             <div>
-                                <label htmlFor="apartmentId">Apartment No.</label>
+                                <label htmlFor="apartmentNo">Apartment No.</label>
                                 <Field
-                                    component="select"
-                                    id="apartmentId"
-                                    name="apartmentId"
-                                >
-                                    <option value="" defaultValue>Select apartment</option>
-                                    {apartments.map((apartment) => {
-                                        return (
-                                            <option value={apartment._id} key={apartment._id}>
-                                                Apartment {apartment.apartment_no}
-                                            </option>
-                                        );
-                                    })}
-                                </Field>
-                                {errors.apartmentId && touched.apartmentId ? (
-                                    <div className="error">{errors.apartmentId}</div>
-                                ) : null}
-                            </div>
-                            <div>
-                                <label htmlFor="month">Email</label>
-                                <Field
-                                    component="select"
-                                    id="month"
-                                    name="month"
-                                >
-                                    <option value="Jan">January</option>
-                                    <option value="Feb">February</option>
-                                    <option value="Mar">March</option>
-                                    <option value="Apr">April</option>
-                                    <option value="May">May</option>
-                                    <option value="Jun">June</option>
-                                    <option value="Jul">July</option>
-                                    <option value="Aug">August</option>
-                                    <option value="Aug">September</option>
-                                    <option value="Oct">October</option>
-                                    <option value="Nov">November</option>
-                                    <option value="Dec">December</option>
-                                </Field>
-                                {errors.month && touched.month ? (
-                                    <div className="error">{errors.month}</div>
-                                ) : null}
-                            </div>
-
-                            <div>
-                                <label htmlFor="year">Year</label>
-                                <Field
-                                    id="year"
-                                    name="year"
-                                    type="text"
-                                />
-                                {errors.year && touched.year ? (
-                                    <div className="error">{errors.year}</div>
-                                ) : null}
-                            </div>
-
-                            <div>
-                                <label htmlFor="reading">Index</label>
-                                <Field
-                                    id="reading"
-                                    name="reading"
+                                    id="apartmentNo"
+                                    name="apartmentNo"
                                     type="number"
                                 />
-                                {errors.reading && touched.reading ? (
-                                    <div className="error">{errors.reading}</div>
+                                {errors.apartmentNo && touched.apartmentNo ? (
+                                    <div className="error">{errors.apartmentNo}</div>
+                                ) : null}
+                            </div>
+                            <div>
+                                <label htmlFor="ownerName">Owner Name</label>
+                                <Field
+                                    id="ownerName"
+                                    name="ownerName"
+                                    type="text"
+                                />
+                                {errors.ownerName && touched.ownerName ? (
+                                    <div className="error">{errors.ownerName}</div>
                                 ) : null}
                             </div>
 
                             <div>
-                                <label htmlFor="readingDate">Reading Date</label>
+                                <label htmlFor="ownerEmail">Owner Email</label>
                                 <Field
-                                    id="readingDate"
-                                    name="readingDate"
-                                    type="date"
+                                    id="ownerEmail"
+                                    name="ownerEmail"
+                                    type="email"
                                 />
-                                {errors.readingDate && touched.readingDate ? (
-                                    <div className="error">{errors.readingDate}</div>
+                                {errors.ownerEmail && touched.ownerEmail ? (
+                                    <div className="error">{errors.ownerEmail}</div>
                                 ) : null}
                             </div>
 
                             <button type="submit" className="btn">Submit</button>
+                            <button type="reset" className="btn btn-outline ml-4">Reset</button>
                         </Form>
                     )}
                 </Formik>

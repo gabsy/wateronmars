@@ -80,7 +80,7 @@ const AddReadingForm = () => {
                                     {apartments.map((apartment) => {
                                         return (
                                             <option value={apartment._id} key={apartment._id}>
-                                                Apartment {apartment.apartment_no}
+                                                Apartment {apartment.apartmentNo}
                                             </option>
                                         );
                                     })}
@@ -90,7 +90,7 @@ const AddReadingForm = () => {
                                 ) : null}
                             </div>
                             <div>
-                                <label htmlFor="month">Email</label>
+                                <label htmlFor="month">Month</label>
                                 <Field
                                     as="select"
                                     id="month"
