@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from 'react';
 import { useUser, useSession, useAuth } from '@clerk/clerk-react';
 import api from '../api/defaults';
 import { checkUserRole } from '../utils/userUtils';
-import Loader from '../components/Loader';
+import Loader2 from '../components/Loader2';
 
 // Create context
 export const GlobalContext = createContext();
@@ -39,7 +39,9 @@ export const GlobalContextProvider = ({ children }) => {
 				} catch (error) {
 					console.error('Error:', error);
 				} finally {
-                    setIsLoading(false);
+                    setTimeout(() => {
+                        setIsLoading(false);
+                    }, 2000);
                 }
 			}
 			
@@ -58,7 +60,7 @@ export const GlobalContextProvider = ({ children }) => {
             readings,
         }}>
             {isSignedIn && isLoading ?
-            <Loader />
+            <Loader2 />
             : children
             }
         </GlobalContext.Provider>

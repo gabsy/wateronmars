@@ -1,0 +1,27 @@
+.hexagon {
+  position: relative;
+  margin: 0 1.5em;
+  width: 3em;
+  height: 4.52em;
+  border-radius: 1em/.5em;
+  background: #617AFF;
+  transition: opacity .5s;
+
+    &:before,
+    &:after {
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      background: inherit;
+      content: '';
+    }
+
+    &:before {
+      transform: rotate(60deg);
+    }
+
+    &:after {
+      transform: rotate(-60deg);
+    }
+}

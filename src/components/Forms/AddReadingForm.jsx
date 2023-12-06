@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import useGlobalContext from '../hooks/useGlobalContext';
-import api from '../api/defaults';
+import useGlobalContext from '../../hooks/useGlobalContext';
+import api from '../../api/defaults';
 import * as yup from 'yup';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
@@ -150,7 +150,8 @@ const AddReadingForm = () => {
                                 ) : null}
                             </div>
 
-                            <button type="submit" className="btn">Submit</button>
+                            <button type="submit" className="btn">Save</button>
+                            <button type="reset" className="btn btn-outline ml-4 border-0">Reset</button>
                         </Form>
                     )}
                 </Formik>

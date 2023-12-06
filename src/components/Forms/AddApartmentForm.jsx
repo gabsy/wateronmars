@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import api from '../api/defaults';
+import api from '../../api/defaults';
 import * as yup from 'yup';
 
 const AddApartmentForm = () => {
@@ -89,8 +89,8 @@ const AddApartmentForm = () => {
                                 ) : null}
                             </div>
 
-                            <button type="submit" className="btn">Submit</button>
-                            <button type="reset" className="btn btn-outline ml-4">Reset</button>
+                            <button type="submit" className="btn">Save</button>
+                            <button type="reset" className="btn btn-outline ml-4 border-0">Reset</button>
                         </Form>
                     )}
                 </Formik>
@@ -104,4 +104,4 @@ const AddApartmentForm = () => {
     )
 }
 
-export default AddApartmentForm
+export default AddApartmentForm;

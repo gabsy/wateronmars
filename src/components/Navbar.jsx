@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import { UserIcon } from '@heroicons/react/24/outline';
+import { UserIcon } from '@heroicons/react/24/solid';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
@@ -15,7 +15,7 @@ const Navbar = () => {
 
 	return (
 		<motion.div
-			className="max-w-screen-2xl mx-auto mb-4"
+			className="max-w-screen-2xl mx-auto mb-8"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{
@@ -36,7 +36,7 @@ const Navbar = () => {
 						</div>
 						<ul className="flex items-center flex-1 justify-end">
 							<li className="mx-2 leading-4">
-								<UserIcon className="h-5 w-5 inline-block align-bottom mr-2" />
+								<UserIcon className="h-5 w-5 inline-block align-bottom mr-2 fill-wom-primary" />
 								{user.fullName} 
 								<span className="inline-block align-middle text-[10px] text-white bg-orange-500 rounded-sm uppercase ml-2 px-1 py-0.25">ap. 3</span>
 								{ userRole === 'admin' && (

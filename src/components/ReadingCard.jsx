@@ -18,7 +18,7 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 
 	return (
 		<>
-			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 transition-all duration-300">
+			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 hover:shadow-md hover:shadow-slate-200 transition-all duration-300">
 				<div className="flex justify-between items-start">
 					<div className="flex gap-3 items-center">
 						<div className={`rounded-full p-2 ${isPaidIconHallow}`}>
@@ -39,14 +39,14 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 				</div>
 				<div className="flex justify-between items-start">
 					<div className="flex flex-col gap-1">
-						<p className="text-sm text-gray-500 leading-none">Index</p>
+						<p className="text-xs text-slate-400 leading-none uppercase">Index</p>
 						<p className="text-2xl font-medium">{reading}
 							<span className="text-xs font-normal"> / {formatedReadingDate}</span>
 						</p>
 					</div>
 
 					<div className="flex flex-col gap-1 text-right">
-						<p className="text-sm text-gray-500 leading-none">
+						<p className="text-xs text-gray-400 leading-none uppercase">
 							<img
 								src={iconDrop}
 								alt="Consumption"

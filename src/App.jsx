@@ -8,7 +8,7 @@ import {
 import Navbar from './components/Navbar';
 import AdminMenu from './components/AdminMenu';
 import Home from './pages/Home';
-import AddReading from './pages/AddReading';
+// import AddReading from './pages/AddReading';
 import Apartments from './pages/Apartments';
 import SignIn from './pages/SignIn';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
@@ -48,7 +48,7 @@ const App = () => {
 							</ProtectedRoute>
 						}
 					/>
-					<Route
+					{/* <Route
 						path="add-reading"
 						element={
 							<ProtectedRoute allowedRoles={['admin']}>
@@ -63,7 +63,7 @@ const App = () => {
 								<AddReading />
 							</ProtectedRoute>
 						}
-					/>
+					/> */}
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</Router>

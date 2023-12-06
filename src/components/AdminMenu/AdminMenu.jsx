@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import Modal from '../Modal/Modal';
-import AddReadingForm from '../AddReadingForm';
-import AddApartmentForm from '../AddApartmentForm';
+import Modal from '../Modal';
+import { AddReadingForm, AddApartmentForm } from '../Forms';
 import { BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
 import useModal from '../../hooks/useModal';
@@ -11,7 +10,7 @@ const AdminMenu = () => {
 	const { isOpen, openModal, closeModal, selectedModal } = useModal();
 
 	return (
-		<div className="max-w-screen-2xl mx-auto px-6 pb-8 flex justify-end gap-6">
+		<div className="max-w-screen-2xl mx-auto px-6 pb-8 flex justify-center gap-6 -mt-8">
 				{/* Link to apartments list page */}
 				<Link to="/apartments" className="text-wom-primary hover:underline font-normal">
 					<BuildingOfficeIcon className="h-5 w-5 inline-block align-top mr-2" />

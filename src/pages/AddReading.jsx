@@ -1,4 +1,4 @@
-import AddReadingForm from '../components/AddReadingForm';
+import { AddReadingForm } from '../components/Forms';
 import Modal from '../components/Modal';
 import PageContainer from '../components/PageContainer';
 

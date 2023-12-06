@@ -1,5 +1,5 @@
 import ApartmentCard from './ApartmentCard';
-import useGlobalContext from '../hooks/useGlobalContext';
+import useGlobalContext from '../../hooks/useGlobalContext';
 
 const ApartmentsList = () => {
 	const apartments = useGlobalContext().apartments;

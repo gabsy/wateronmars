@@ -12,7 +12,7 @@ import iconDrop from '../assets/icons/icon-drop.svg';
 const Chart = ({ data }) => {
 	return (
 		<div className="font-light text-sm w-3/5">
-			<ResponsiveContainer width="100%" height={300}>
+			<ResponsiveContainer width="100%" height={280}>
 				<AreaChart
 					data={data}
 					margin={{ top: 10, right: 0, left: -24, bottom: 0 }}
@@ -31,7 +31,7 @@ const Chart = ({ data }) => {
 						padding={{ bottom: 20 }}
 						margin={{ left: 20 }}
 					/>
-					<Tooltip content={<CustomTooltip active={false} payload={[]} label={""} />} />
+					<Tooltip content={<CustomTooltip active={false} payload={[]} label={""}/>} />
 					<Area
 						type="monotone"
 						dataKey="mc"
@@ -50,18 +50,16 @@ const Chart = ({ data }) => {
 // Custom tooltip for Recharts
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
-    return (
-      <div className="px-4 py-2 shadow bg-white">
-        <span className="font-semibold text-sm">{label}</span>
-        {payload.map((ele, index) => (
-          <>
-            <div key={index} className="mt-1 flex text-sm text-wom-primary">
-               <img src={iconDrop} className="baseline mr-1"/> {ele.value} {ele.name}
-            </div>
-          </>
-        ))}
-      </div>
-    );
+	return (
+		<div className="px-4 py-2 shadow bg-white">
+			<span className="font-semibold text-sm">{label}</span>
+			{payload.map((ele, index) => (
+				<div key={index} className="mt-1 flex text-sm text-wom-primary">
+					<img src={iconDrop} className="baseline mr-1"/> {ele.value} {ele.name}
+				</div>
+			))}
+		</div>
+	);
   }
   return null;
 };

@@ -13,15 +13,13 @@ const ReadingsList = () => {
 	readings.sort((a, b) => new Date(b.readingDate) - new Date(a.readingDate));
 	const filteredReadings = readings.filter(reading => reading.apartmentId === apartmentId);
 
-	console.log(filteredReadings);
-
 	// Set isLoaded to true when readings are fetched
 	useEffect(() => {
 		if(filteredReadings.length > 0) {
 			// Simulate longer loading time for demo purposes.
 			setTimeout(() => {
 				setIsLoaded(true);
-			}, 1500);
+			}, 2000);
 		}
 	}, [filteredReadings]);
 
