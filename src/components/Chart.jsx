@@ -19,19 +19,41 @@ const Chart = ({ data }) => {
 					responsive={true}
 				>
 					<defs>
-						<linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="5%" stopColor="#516AFF" stopOpacity={0.1}/>
-							<stop offset="95%" stopColor="#516AFF" stopOpacity={0}/>
+						<linearGradient
+							id="colorPv"
+							x1="0"
+							y1="0"
+							x2="0"
+							y2="1"
+						>
+							<stop
+								offset="5%"
+								stopColor="#516AFF"
+								stopOpacity={0.1}
+							/>
+							<stop
+								offset="95%"
+								stopColor="#516AFF"
+								stopOpacity={0}
+							/>
 						</linearGradient>
 					</defs>
-					<XAxis dataKey="name" stroke="#999" strokeWidth="0"/>
+					<XAxis dataKey="name" stroke="#999" strokeWidth="0" />
 					<YAxis
 						stroke="#999"
 						strokeWidth="0"
 						padding={{ bottom: 20 }}
 						margin={{ left: 20 }}
 					/>
-					<Tooltip content={<CustomTooltip active={false} payload={[]} label={""}/>} />
+					<Tooltip
+						content={
+							<CustomTooltip
+								active={false}
+								payload={[]}
+								label={''}
+							/>
+						}
+					/>
 					<Area
 						type="monotone"
 						dataKey="mc"
@@ -49,19 +71,23 @@ const Chart = ({ data }) => {
 
 // Custom tooltip for Recharts
 const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload?.length) {
-	return (
-		<div className="px-4 py-2 shadow bg-white">
-			<span className="font-semibold text-sm">{label}</span>
-			{payload.map((ele, index) => (
-				<div key={index} className="mt-1 flex text-sm text-wom-primary">
-					<img src={iconDrop} className="baseline mr-1"/> {ele.value} {ele.name}
-				</div>
-			))}
-		</div>
-	);
-  }
-  return null;
+	if (active && payload?.length) {
+		return (
+			<div className="px-4 py-2 shadow bg-white">
+				<span className="font-semibold text-sm">{label}</span>
+				{payload.map((ele, index) => (
+					<div
+						key={index}
+						className="mt-1 flex text-sm text-wom-primary"
+					>
+						<img src={iconDrop} className="baseline mr-1" />{' '}
+						{ele.value} {ele.name}
+					</div>
+				))}
+			</div>
+		);
+	}
+	return null;
 };
 
 export default Chart;

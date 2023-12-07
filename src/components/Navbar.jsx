@@ -37,20 +37,22 @@ const Navbar = () => {
 						<ul className="flex items-center flex-1 justify-end">
 							<li className="mx-2 leading-4">
 								<UserIcon className="h-5 w-5 inline-block align-bottom mr-2 fill-wom-primary" />
-								{user.fullName} 
-								<span className="inline-block align-middle text-[10px] text-white bg-orange-500 rounded-sm uppercase ml-2 px-1 py-0.25">ap. 3</span>
-								{ userRole === 'admin' && (
+								{user.fullName}
+								<span className="inline-block align-middle text-[10px] text-white bg-orange-500 rounded-sm uppercase ml-2 px-1 py-0.25">
+									ap. 3
+								</span>
+								{userRole === 'admin' && (
 									<span className="inline-block align-middle text-[10px] text-white bg-wom-primary rounded-sm uppercase ml-1 px-1 py-0.25">
 										{userRole}
 									</span>
 								)}
 							</li>
 							<li className="ml-3">
-										<button
-											className="bg-transparent cursor-pointer hover:text-wom-primary"
-											onClick={() => signOut()}
-											title="Sign Out"
-										>
+								<button
+									className="bg-transparent cursor-pointer hover:text-wom-primary"
+									onClick={() => signOut()}
+									title="Sign Out"
+								>
 									<ArrowRightOnRectangleIcon className="h-5 w-5 inline-block align-middle" />
 								</button>
 							</li>

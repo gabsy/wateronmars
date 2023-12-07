@@ -9,12 +9,10 @@ const AddReading = () => {
 				<div className="w-1/3">
 					<Modal content={<AddReadingForm />} />
 				</div>
-				<div className="w-2/3">
-					{/* <AddReadingForm /> */}
-				</div>
+				<div className="w-2/3">{/* <AddReadingForm /> */}</div>
 			</div>
 		</PageContainer>
-	)
-}
+	);
+};
 
-export default AddReading
+export default AddReading;

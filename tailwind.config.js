@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'sans': 'Poppins, Helvetica, Arial, sans-serif',
+				sans: 'Poppins, Helvetica, Arial, sans-serif',
 			},
 			fontWeight: {
 				default: 400,
@@ -24,9 +24,9 @@ export default {
 		},
 	},
 	plugins: [
-		function({ addBase, config }) {
+		function ({ addBase, config }) {
 			addBase({
-				'body': { fontWeight: config('theme.fontWeight.default') },
+				body: { fontWeight: config('theme.fontWeight.default') },
 			});
 		},
 	],

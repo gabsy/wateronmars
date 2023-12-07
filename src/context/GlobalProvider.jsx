@@ -10,59 +10,59 @@ export const GlobalContext = createContext();
 
 // Provider component
 export const GlobalContextProvider = ({ children }) => {
-    const { user, isSignedIn } = useUser();
-    const [ apartments , setApartments ] = useState([]);
-    const [ readings , setReadings ] = useState([]);
-    const [ apartment, setApartment ] = useState();
-    const [ isLoading, setIsLoading ] = useState(true);
-    const { session } = useSession();
-    const userRole = checkUserRole(session);
-    const { getToken } = useAuth();
+	const { user, isSignedIn } = useUser();
+	const [apartments, setApartments] = useState([]);
+	const [readings, setReadings] = useState([]);
+	const [apartment, setApartment] = useState();
+	const [isLoading, setIsLoading] = useState(true);
+	const { session } = useSession();
+	const userRole = checkUserRole(session);
+	const { getToken } = useAuth();
 
-    useEffect(() => {
-		if(isSignedIn) {
-            // Get signedin user email as ref for apartments filtering.
-            const userEmail = user.emailAddresses[0].emailAddress;
+	useEffect(() => {
+		if (isSignedIn) {
+			// Get signedin user email as ref for apartments filtering.
+			const userEmail = user.emailAddresses[0].emailAddress;
 
 			// Fetch apartments from API.
 			const fetchData = async () => {
 				try {
 					const apartmentsData = await api.get('/apartments');
-                    setApartments(apartmentsData.data);
-					
-                    const userApartment = apartmentsData.data.filter(apartment => apartment.ownerEmail === userEmail);
+					setApartments(apartmentsData.data);
+
+					const userApartment = apartmentsData.data.filter(
+						(apartment) => apartment.ownerEmail === userEmail,
+					);
 					setApartment(userApartment[0]);
 
-                    const readingsData = await api.get('/readings');
-                    setReadings(readingsData.data);
-
+					const readingsData = await api.get('/readings');
+					setReadings(readingsData.data);
 				} catch (error) {
 					console.error('Error:', error);
 				} finally {
-                    setTimeout(() => {
-                        setIsLoading(false);
-                    }, 800);
-                }
-			}
-			
-            fetchData();
+					setTimeout(() => {
+						setIsLoading(false);
+					}, 800);
+				}
+			};
+
+			fetchData();
 		}
 	}, [isSignedIn, user, getToken]);
 
-    return (
-        <GlobalContext.Provider value={{
-            user,
-            apartment,
-            setApartment,
-            apartments,
-            setApartments,
-            userRole,
-            readings,
-        }}>
-            {isSignedIn && isLoading ?
-            <Loader2 />
-            : children
-            }
-        </GlobalContext.Provider>
-    );
-}
+	return (
+		<GlobalContext.Provider
+			value={{
+				user,
+				apartment,
+				setApartment,
+				apartments,
+				setApartments,
+				userRole,
+				readings,
+			}}
+		>
+			{isSignedIn && isLoading ? <Loader2 /> : children}
+		</GlobalContext.Provider>
+	);
+};

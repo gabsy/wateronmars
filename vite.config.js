@@ -8,8 +8,8 @@ export default defineConfig({
 	plugins: [
 		react({
 			babel: {
-				plugins: [...conditionalPlugins]
-			}
-		})
+				plugins: [...conditionalPlugins],
+			},
+		}),
 	],
 });

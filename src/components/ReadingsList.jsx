@@ -11,11 +11,13 @@ const ReadingsList = () => {
 
 	// Filter readings by apartment id and sort by readingDate
 	readings.sort((a, b) => new Date(b.readingDate) - new Date(a.readingDate));
-	const filteredReadings = readings.filter(reading => reading.apartmentId === apartmentId);
+	const filteredReadings = readings.filter(
+		(reading) => reading.apartmentId === apartmentId,
+	);
 
 	// Set isLoaded to true when readings are fetched
 	useEffect(() => {
-		if(filteredReadings.length > 0) {
+		if (filteredReadings.length > 0) {
 			// Simulate longer loading time for demo purposes.
 			setTimeout(() => {
 				setIsLoaded(true);
@@ -28,7 +30,7 @@ const ReadingsList = () => {
 	for (let i = 0; i < 9; i++) {
 		cardLoadingPlaceholder.push(i);
 	}
-	
+
 	// Framer motion variants
 	const listContainer = {
 		hidden: { opacity: 1 },
@@ -37,19 +39,29 @@ const ReadingsList = () => {
 
 	const listItem = {
 		hidden: { opacity: 0 },
-		visible: { opacity: 1 }
+		visible: { opacity: 1 },
 	};
 
 	return (
 		<>
 			<div className="buttons flex justify-between items-center mb-8 px-2">
-				<h2 className="text-xl md:text-2xl font-semibold">Consumptions by month</h2>
+				<h2 className="text-xl md:text-2xl font-semibold">
+					Consumptions by month
+				</h2>
 				<div className="flex gap-3">
-					Filter by year: 
-					<button className="btn btn-outline btn-smaller">All years</button>
-					<button className="btn btn-outline btn-smaller">2023</button>
-					<button className="btn btn-outline btn-smaller">2022</button>
-					<button className="btn btn-outline btn-smaller">2021</button>
+					Filter by year:
+					<button className="btn btn-outline btn-smaller">
+						All years
+					</button>
+					<button className="btn btn-outline btn-smaller">
+						2023
+					</button>
+					<button className="btn btn-outline btn-smaller">
+						2022
+					</button>
+					<button className="btn btn-outline btn-smaller">
+						2021
+					</button>
 				</div>
 			</div>
 			<motion.div
@@ -58,15 +70,16 @@ const ReadingsList = () => {
 				initial="hidden"
 				animate={isLoaded ? 'visible' : 'hidden'}
 			>
-				{ isLoaded && (
+				{isLoaded &&
 					filteredReadings.map((reading, index) => {
 						// Get previous reading index for consumption calculation
-						const prevReading = index + 1 < filteredReadings.length ? filteredReadings[index + 1] : 0;
+						const prevReading =
+							index + 1 < filteredReadings.length
+								? filteredReadings[index + 1]
+								: 0;
 
 						return (
-							<motion.div key={index}
-								variants={listItem}
-							>
+							<motion.div key={index} variants={listItem}>
 								<ReadingCard
 									month={reading.month}
 									year={reading.year}
@@ -76,18 +89,13 @@ const ReadingsList = () => {
 									paid={reading.paid}
 								/>
 							</motion.div>
-						)
-					})
-				)}
+						);
+					})}
 
-				{ !isLoaded && (
+				{!isLoaded &&
 					cardLoadingPlaceholder.map((card, index) => {
-						return (
-							<ReadingCardPlaceholder key={index} />
-						)
-					})
-				)}
-
+						return <ReadingCardPlaceholder key={index} />;
+					})}
 			</motion.div>
 		</>
 	);

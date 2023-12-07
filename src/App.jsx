@@ -15,7 +15,6 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
-
 	return (
 		// <div className="bg-wom-bgGlobal bg-[url('bg-image3.jpg')] bg-cover min-h-screen pt-10 pb-16 px-5">
 		<div className="bg-wom-bgGlobal bg-cover min-h-screen pt-4 pb-16 px-5">
@@ -30,14 +29,14 @@ const App = () => {
 					<Route
 						path="/"
 						element={
-						<>
-							<SignedIn>
-								<Home />
-							</SignedIn>
-							<SignedOut>
-								<SignIn />
-							</SignedOut>
-						</>
+							<>
+								<SignedIn>
+									<Home />
+								</SignedIn>
+								<SignedOut>
+									<SignIn />
+								</SignedOut>
+							</>
 						}
 					/>
 					<Route

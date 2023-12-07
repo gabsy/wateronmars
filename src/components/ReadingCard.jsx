@@ -3,7 +3,14 @@ import iconCheck from '../assets/icons/icon-check.svg';
 import iconDrop from '../assets/icons/icon-drop.svg';
 import { formatDate } from '../utils/formatDate';
 
-const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) => {
+const ReadingCard = ({
+	month,
+	year,
+	reading,
+	readingDate,
+	paid,
+	prevReading,
+}) => {
 	const isPaid = paid;
 	const isPaidIcon = isPaid ? iconCheck : iconFlag;
 	const isPaidIconBg = isPaid ? 'bg-wom-primary' : 'bg-red-600';
@@ -28,20 +35,29 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 								className={`rounded-full p-2 ${isPaidIconBg}`}
 							/>
 						</div>
-						<h3 className={`font-semibold text-md leading-tight whitespace-pre-line ${isPaid ? 'text-wom-primary' : ''}`}>
+						<h3
+							className={`font-semibold text-md leading-tight whitespace-pre-line ${
+								isPaid ? 'text-wom-primary' : ''
+							}`}
+						>
 							{isPaid ? 'Paid.\nThank you!' : 'Payment\nOverdue'}
 						</h3>
 					</div>
-					<div
-						className="flex text-xs gap-2 items-center rounded-full px-2 py-1 mt-2 bg-gray-600 text-white">
+					<div className="flex text-xs gap-2 items-center rounded-full px-2 py-1 mt-2 bg-gray-600 text-white">
 						{monthShort} {year}
 					</div>
 				</div>
 				<div className="flex justify-between items-start">
 					<div className="flex flex-col gap-1">
-						<p className="text-xs text-slate-400 leading-none uppercase">Index</p>
-						<p className="text-2xl font-medium">{reading}
-							<span className="text-xs font-normal"> / {formatedReadingDate}</span>
+						<p className="text-xs text-slate-400 leading-none uppercase">
+							Index
+						</p>
+						<p className="text-2xl font-medium">
+							{reading}
+							<span className="text-xs font-normal">
+								{' '}
+								/ {formatedReadingDate}
+							</span>
 						</p>
 					</div>
 
@@ -66,7 +82,10 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 						className={`uppercase leading-none text-2xl font-semibold ${isPaidText}`}
 					>
 						{totalDue}
-						<span className="text-sm font-normal leading-none"> RON</span>
+						<span className="text-sm font-normal leading-none">
+							{' '}
+							RON
+						</span>
 					</div>
 				</div>
 			</div>
