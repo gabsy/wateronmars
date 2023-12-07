@@ -28,12 +28,12 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 								className={`rounded-full p-2 ${isPaidIconBg}`}
 							/>
 						</div>
-						<h3 className="font-semibold text-lg leading-tight whitespace-pre-line">
+						<h3 className={`font-semibold text-md leading-tight whitespace-pre-line ${isPaid ? 'text-wom-primary' : ''}`}>
 							{isPaid ? 'Paid.\nThank you!' : 'Payment\nOverdue'}
 						</h3>
 					</div>
 					<div
-						className="flex text-xs gap-2 items-center rounded-full px-3 py-1 mt-2 bg-gray-600 text-white">
+						className="flex text-xs gap-2 items-center rounded-full px-2 py-1 mt-2 bg-gray-600 text-white">
 						{monthShort} {year}
 					</div>
 				</div>
@@ -63,10 +63,10 @@ const ReadingCard = ({month, year, reading, readingDate, paid, prevReading }) =>
 				<div className="flex items-end justify-end gap-4 pt-5 border-t border-gray-200">
 					<div className="uppercase text-xs mr-1">Total amount:</div>
 					<div
-						className={`uppercase leading-none text-3xl font-semibold ${isPaidText}`}
+						className={`uppercase leading-none text-2xl font-semibold ${isPaidText}`}
 					>
 						{totalDue}
-						<span className="text-sm font-normal leading-none">.00 RON</span>
+						<span className="text-sm font-normal leading-none"> RON</span>
 					</div>
 				</div>
 			</div>

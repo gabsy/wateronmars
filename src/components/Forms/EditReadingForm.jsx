@@ -5,7 +5,7 @@ import api from '../../api/defaults';
 import * as yup from 'yup';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
-const AddReadingForm = () => {
+const EditReadingForm = () => {
     const { apartments } = useGlobalContext();
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -166,4 +166,4 @@ const AddReadingForm = () => {
     )
 }
 
-export default AddReadingForm
+export default EditReadingForm

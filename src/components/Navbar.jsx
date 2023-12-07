@@ -46,11 +46,11 @@ const Navbar = () => {
 								)}
 							</li>
 							<li className="ml-3">
-								<button
-									className="bg-transparent cursor-pointer hover:text-wom-primary"
-									onClick={() => signOut()}
-									title="Sign Out"
-								>
+										<button
+											className="bg-transparent cursor-pointer hover:text-wom-primary"
+											onClick={() => signOut()}
+											title="Sign Out"
+										>
 									<ArrowRightOnRectangleIcon className="h-5 w-5 inline-block align-middle" />
 								</button>
 							</li>

@@ -14,8 +14,9 @@ input[type="text"],
 input[type="email"],
 input[type="number"],
 input[type="date"],
+input[type="password"],
 select {
-	@apply border rounded w-full font-normal py-3 px-2.5 focus:border-wom-primary focus:outline-none;
+	@apply border border-gray-300 rounded w-full font-normal py-3 px-2.5 focus:border-wom-primary focus:outline-none;
 	
 	& + .error {
 		@apply w-full text-red-600 text-sm mt-2;
@@ -32,7 +33,7 @@ label {
 
 /* Button component */
 .btn {
-	@apply bg-wom-primary text-white py-2 px-6 rounded-md focus:ring-4 focus:ring-blue-300 font-medium transition duration-200 ease-in-out;
+	@apply bg-wom-primary text-white py-2 px-6 rounded-full focus:ring-4 focus:ring-blue-300 font-medium transition duration-200 ease-in-out;
 
 	&.btn-smaller {
 		@apply py-0.5 px-3 text-sm rounded-full;

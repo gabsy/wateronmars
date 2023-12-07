@@ -30,9 +30,9 @@ const OverviewStats = () => {
 			<div className="flex flex-row-reverse pb-10 lg:pb-0 w-full justify-between md:justify-start md:flex-row items-start gap-5">
 				<BuildingOfficeIcon className="h-11 w-11 stroke-wom-primary fill-wom-primary stroke-1.5"/>
 				<div className="leading-8">
-					<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold whitespace-nowrap mb-6">Apartment {apartmentNo}</h2>
+					<h2 className="text-3xl md:text-4xl font-bold whitespace-nowrap mb-8">Apartment {apartmentNo}</h2>
 					<UserIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary"/>
-					<span className="text-lg">{owner}</span><br/>
+					{owner}<br/>
 					<EnvelopeIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary"/>
 					<a
 						className="lowercase text-wom-primary hover:underline" 
@@ -46,13 +46,13 @@ const OverviewStats = () => {
 					<p className="text-xs pb-2 sm:pb-3 leading-1 text-slate-400 uppercase">
 						Last index reading
 					</p>
-					<h3 className="text-3xl lg:text-4xl font-semibold">{lastIndex}</h3>
+					<h3 className="text-3xl lg:text-3xl font-semibold">{lastIndex}</h3>
 				</div>
 				<div className="lg:pl-8 lg:border-l border-gray-200 whitespace-nowrap">
 					<p className="text-xs pb-2 sm:pb-3 leading-1 text-slate-400 uppercase">
 						Last consumption
 					</p>
-					<h3 className="text-3xl lg:text-4xl whitespace-nowrap font-bold">
+					<h3 className="text-3xl lg:text-3xl whitespace-nowrap font-semibold">
 						{consumption}
 						<span className="text-base font-normal"> mc</span>
 					</h3>
@@ -62,12 +62,12 @@ const OverviewStats = () => {
 						Total due
 					</p>
 					<h3
-						className={`text-3xl lg:text-4xl whitespace-nowrap font-semibold ${
+						className={`text-3xl lg:text-3xl whitespace-nowrap font-semibold ${
 							totalDue > 0 ? 'text-red-600' : ''
 						}`}
 					>
 						{totalDue}
-						<span className="text-base font-normal">.00 RON</span>
+						<span className="text-base font-normal"> RON</span>
 					</h3>
 				</div>
 			</div>

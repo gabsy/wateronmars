@@ -8,9 +8,9 @@ const Modal = ({ content, title, isOpen, onClose }) => {
 		<>
 			{isOpen && (
 				<div className="modal">
-					<div onClick={onClose} className="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity opacity-100"></div>
+					<div onClick={onClose} className="fixed inset-0 bg-slate-900/75 backdrop-blur"></div>
 					<motion.div
-						className="modal-content w-full rounded-lg p-6 md:p-12 shadow-lg shadow-gray-400"
+						className="modal-content w-full rounded-lg p-6 md:p-12"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 					>

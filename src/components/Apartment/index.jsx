@@ -1,4 +1,4 @@
 import ApartmentCard from './ApartmentCard';
 import ApartmentsList from './ApartmentsList';
 
-export { ApartmentCard, ApartmentsList };
+export default { ApartmentCard, ApartmentsList };

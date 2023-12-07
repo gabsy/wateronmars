@@ -1,11 +1,12 @@
 .hexagon {
   position: relative;
   margin: 0 1.5em;
-  width: 3em;
-  height: 4.52em;
+  width: 2.6em;
+  height: 3.8em;
   border-radius: 1em/.5em;
   background: #617AFF;
   transition: opacity .5s;
+  flex-shrink: 0;
 
     &:before,
     &:after {
@@ -23,5 +24,9 @@
 
     &:after {
       transform: rotate(-60deg);
+    }
+
+    @media (max-width: 768px) {
+      transform: scale(0.9);
     }
 }

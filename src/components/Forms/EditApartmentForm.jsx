@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import api from '../../api/defaults';
 import * as yup from 'yup';
 
-const AddApartmentForm = () => {
+const EditApartmentForm = () => {
     // const { apartments } = useGlobalContext();
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -104,4 +104,4 @@ const AddApartmentForm = () => {
     )
 }
 
-export default AddApartmentForm;
+export default EditApartmentForm;

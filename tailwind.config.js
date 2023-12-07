@@ -2,13 +2,13 @@
 export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
-
 		extend: {
 			fontFamily: {
-				'sans': 'Inter, Helvetica, Arial, sans-serif',
+				'sans': 'Poppins, Helvetica, Arial, sans-serif',
 			},
 			fontWeight: {
 				default: 400,
+				semibold: 600,
 			},
 			colors: {
 				wom: {
@@ -18,7 +18,7 @@ export default {
 					grayMediumLight: 'rgba(246, 248, 255, 0.70)',
 					green: '#6FD1E7',
 					greenLight: '#DCF9FF',
-					bgGlobal: '#F5F5f5',
+					bgGlobal: '#F5F5F5',
 				},
 			},
 		},

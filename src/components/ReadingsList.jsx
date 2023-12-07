@@ -19,7 +19,7 @@ const ReadingsList = () => {
 			// Simulate longer loading time for demo purposes.
 			setTimeout(() => {
 				setIsLoaded(true);
-			}, 2000);
+			}, 800);
 		}
 	}, [filteredReadings]);
 

@@ -21,7 +21,7 @@ export const GlobalContextProvider = ({ children }) => {
 
     useEffect(() => {
 		if(isSignedIn) {
-            // Get signedin user email and role as ref for apartments filtering.
+            // Get signedin user email as ref for apartments filtering.
             const userEmail = user.emailAddresses[0].emailAddress;
 
 			// Fetch apartments from API.
@@ -41,7 +41,7 @@ export const GlobalContextProvider = ({ children }) => {
 				} finally {
                     setTimeout(() => {
                         setIsLoading(false);
-                    }, 2000);
+                    }, 800);
                 }
 			}
 			
