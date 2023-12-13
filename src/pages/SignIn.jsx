@@ -33,8 +33,8 @@ const SignIn = () => {
 	}
 
 	return (
-		<div className="flex w-full items-center h-screen">
-			<div className="w-full flex max-w-screen-xl lg:min-h-[700px] mx-auto bg-white rounded-3xl overflow-hidden shadow-sm">
+		<div className="flex w-full items-start mt-5 md:items-center lg:mt-0 h-screen">
+			<div className="lg:w-full flex max-w-screen-xl lg:min-h-[700px] mx-auto bg-white rounded-3xl overflow-hidden shadow-sm">
 				<div
 					className="relative flex-1 hidden items-center justify-center bg-gray-900 lg:flex p-16"
 					style={{
@@ -72,8 +72,8 @@ const SignIn = () => {
 						}}
 					></div>
 				</div>
-				<div className="flex-1 flex items-center justify-center px-6 py-10 lg:p-16">
-					<div className="w-full max-w-md px-4 bg-white text-gray-600 sm:px-0">
+				<div className="flex-1 flex items-center justify-center p-8 sm:p-12 lg:p-16">
+					<div className="w-full max-w-md  bg-white text-gray-600">
 						<img src={logo} className="lg:hidden mb-10" />
 						<div className="space-y-3 mb-8">
 							<h2 className="text-gray-800 text-2xl font-bold sm:text-4xl mt-0">
