@@ -4,9 +4,9 @@ body.active-modal {
 
 .modal,
 .overlay {
-    align-items: center;
+    /* align-items: center;
     justify-content: center;
-    display: flex;
+    display: flex; */
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -21,7 +21,10 @@ body.active-modal {
     background: #fff;
     z-index: 10000;
     max-width: 500px;
-    position: relative;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .close-modal {

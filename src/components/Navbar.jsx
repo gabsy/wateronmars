@@ -19,7 +19,7 @@ const Navbar = () => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{
-				duration: 0.5,
+				duration: 0.3,
 			}}
 		>
 			<nav className="flex justify-between items-center pt-6 px-2 pb-4">

@@ -8,6 +8,7 @@ const ReadingsList = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const readings = useGlobalContext().readings;
 	const apartmentId = useGlobalContext().apartment._id;
+	const { userRole } = useGlobalContext();
 
 	// Filter readings by apartment id and sort by readingDate
 	readings.sort((a, b) => new Date(b.readingDate) - new Date(a.readingDate));
@@ -34,7 +35,7 @@ const ReadingsList = () => {
 	// Framer motion variants
 	const listContainer = {
 		hidden: { opacity: 1 },
-		visible: { opacity: 1, transition: { staggerChildren: 0.09 } },
+		visible: { opacity: 1, transition: { staggerChildren: 0.09 }, },
 	};
 
 	const listItem = {
@@ -48,7 +49,7 @@ const ReadingsList = () => {
 				<h2 className="text-xl md:text-2xl font-semibold">
 					Consumptions by month
 				</h2>
-				<div className="flex gap-3">
+				<div className="flex gap-3 pointer-events-none opacity-30">
 					Filter by year:
 					<button className="btn btn-outline btn-smaller">
 						All years
@@ -81,12 +82,14 @@ const ReadingsList = () => {
 						return (
 							<motion.div key={index} variants={listItem}>
 								<ReadingCard
+									readingId={reading._id}
 									month={reading.month}
 									year={reading.year}
 									prevReading={prevReading.reading}
 									reading={reading.reading}
 									readingDate={reading.readingDate}
 									paid={reading.paid}
+									userRole={userRole}
 								/>
 							</motion.div>
 						);

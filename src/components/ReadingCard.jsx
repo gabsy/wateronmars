@@ -2,15 +2,26 @@ import iconFlag from '../assets/icons/icon-flag.svg';
 import iconCheck from '../assets/icons/icon-check.svg';
 import iconDrop from '../assets/icons/icon-drop.svg';
 import { formatDate } from '../utils/formatDate';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
+
+import Modal from './Modal';
+import { EditReadingForm } from './Forms';
+import useModal from '../hooks/useModal';
 
 const ReadingCard = ({
+	readingId,
 	month,
 	year,
 	reading,
 	readingDate,
 	paid,
 	prevReading,
+	userRole,
 }) => {
+	// Set the oldest reading as previous reading
+	prevReading = prevReading || reading;
+
+	const { isOpen, openModal, closeModal, selectedModal } = useModal();
 	const isPaid = paid;
 	const isPaidIcon = isPaid ? iconCheck : iconFlag;
 	const isPaidIconBg = isPaid ? 'bg-wom-primary' : 'bg-red-600';
@@ -23,9 +34,34 @@ const ReadingCard = ({
 	const cubicMeters = reading - prevReading;
 	const totalDue = Math.ceil(cubicMeters * priceCubicMeter);
 
+	const deleteReading = () => {
+		console.log('delete reading');
+	}
+
 	return (
 		<>
-			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 hover:shadow-md hover:shadow-slate-200 transition-all duration-300">
+			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
+
+				{/* Reading card Actions */}
+				{userRole === 'admin' && (
+					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-4">
+						{/* Edit reading */}
+						<button
+							onClick={() => openModal('editReading')}
+							className="hover:text-wom-primary hover:border-wom-primary transition-all duration-200 leading-none rounded-full border border-gray-300 p-1.5 text-gray-500"
+						>
+							<PencilIcon className="h-4 w-4 inline-block align-top" />
+						</button>
+						{/* Delete reading */}
+						<button
+							onClick={deleteReading()}
+							className=" hover:text-red-600 hover:border-red-600 transition-all duration-200 leading-none rounded-full border border-gray-300 p-1.5 text-gray-500"
+						>
+							<TrashIcon className="h-4 w-4 inline-block align-top" />
+						</button>
+					</div>
+				)}
+
 				<div className="flex justify-between items-start">
 					<div className="flex gap-3 items-center">
 						<div className={`rounded-full p-2 ${isPaidIconHallow}`}>
@@ -36,9 +72,8 @@ const ReadingCard = ({
 							/>
 						</div>
 						<h3
-							className={`font-semibold text-md leading-tight whitespace-pre-line ${
-								isPaid ? 'text-wom-primary' : ''
-							}`}
+							className={`font-semibold text-md leading-tight whitespace-pre-line ${isPaid ? 'text-wom-primary' : ''
+								}`}
 						>
 							{isPaid ? 'Paid.\nThank you!' : 'Payment\nOverdue'}
 						</h3>
@@ -89,6 +124,15 @@ const ReadingCard = ({
 					</div>
 				</div>
 			</div>
+
+			{/* Edit reading modal */}
+			{userRole === 'admin' && selectedModal === 'editReading' && (
+				<Modal
+					content={<EditReadingForm readingId={readingId} />}
+					isOpen={isOpen}
+					onClose={closeModal}
+				/>
+			)}
 		</>
 	);
 };

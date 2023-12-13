@@ -61,120 +61,123 @@ const AddReadingForm = () => {
 	return (
 		<>
 			{!isSubmitted && (
-				<Formik
-					initialValues={{
-						apartmentId: '',
-						month: previousMonth,
-						year: new Date().getFullYear().toString(),
-						reading: '',
-						readingDate: new Date().toISOString().slice(0, 10),
-					}}
-					onSubmit={handleSubmit}
-					validationSchema={validationSchema}
-				>
-					{({ errors, touched }) => (
-						<Form className="form space-y-6">
-							<div>
-								<label htmlFor="apartmentId">
-									Apartment No.
-								</label>
-								<Field
-									as="select"
-									id="apartmentId"
-									name="apartmentId"
+				<>
+					<h2 className="text-3xl font-bold pb-10">Add reading</h2>
+					<Formik
+						initialValues={{
+							apartmentId: '',
+							month: previousMonth,
+							year: new Date().getFullYear().toString(),
+							reading: '',
+							readingDate: new Date().toISOString().slice(0, 10),
+						}}
+						onSubmit={handleSubmit}
+						validationSchema={validationSchema}
+					>
+						{({ errors, touched }) => (
+							<Form className="form space-y-6">
+								<div>
+									<label htmlFor="apartmentId">
+										Apartment No.
+									</label>
+									<Field
+										as="select"
+										id="apartmentId"
+										name="apartmentId"
+									>
+										<option value="" defaultValue>
+											Select apartment
+										</option>
+										{apartments.map((apartment) => {
+											return (
+												<option
+													value={apartment._id}
+													key={apartment._id}
+												>
+													Apartment{' '}
+													{apartment.apartmentNo}
+												</option>
+											);
+										})}
+									</Field>
+									{errors.apartmentId && touched.apartmentId ? (
+										<div className="error">
+											{errors.apartmentId}
+										</div>
+									) : null}
+								</div>
+								<div>
+									<label htmlFor="month">Month</label>
+									<Field as="select" id="month" name="month">
+										<option value="Jan">January</option>
+										<option value="Feb">February</option>
+										<option value="Mar">March</option>
+										<option value="Apr">April</option>
+										<option value="May">May</option>
+										<option value="Jun">June</option>
+										<option value="Jul">July</option>
+										<option value="Aug">August</option>
+										<option value="Aug">September</option>
+										<option value="Oct">October</option>
+										<option value="Nov">November</option>
+										<option value="Dec">December</option>
+									</Field>
+									{errors.month && touched.month ? (
+										<div className="error">{errors.month}</div>
+									) : null}
+								</div>
+
+								<div>
+									<label htmlFor="year">Year</label>
+									<Field id="year" name="year" type="text" />
+									{errors.year && touched.year ? (
+										<div className="error">{errors.year}</div>
+									) : null}
+								</div>
+
+								<div>
+									<label htmlFor="reading">Index</label>
+									<Field
+										id="reading"
+										name="reading"
+										type="number"
+									/>
+									{errors.reading && touched.reading ? (
+										<div className="error">
+											{errors.reading}
+										</div>
+									) : null}
+								</div>
+
+								<div>
+									<label htmlFor="readingDate">
+										Reading Date
+									</label>
+									<Field
+										id="readingDate"
+										name="readingDate"
+										type="date"
+									/>
+									{errors.readingDate && touched.readingDate ? (
+										<div className="error">
+											{errors.readingDate}
+										</div>
+									) : null}
+								</div>
+
+								<button type="submit" className="btn">
+									Save
+								</button>
+								<button
+									type="reset"
+									className="btn btn-outline ml-4 border-0"
 								>
-									<option value="" defaultValue>
-										Select apartment
-									</option>
-									{apartments.map((apartment) => {
-										return (
-											<option
-												value={apartment._id}
-												key={apartment._id}
-											>
-												Apartment{' '}
-												{apartment.apartmentNo}
-											</option>
-										);
-									})}
-								</Field>
-								{errors.apartmentId && touched.apartmentId ? (
-									<div className="error">
-										{errors.apartmentId}
-									</div>
-								) : null}
-							</div>
-							<div>
-								<label htmlFor="month">Month</label>
-								<Field as="select" id="month" name="month">
-									<option value="Jan">January</option>
-									<option value="Feb">February</option>
-									<option value="Mar">March</option>
-									<option value="Apr">April</option>
-									<option value="May">May</option>
-									<option value="Jun">June</option>
-									<option value="Jul">July</option>
-									<option value="Aug">August</option>
-									<option value="Aug">September</option>
-									<option value="Oct">October</option>
-									<option value="Nov">November</option>
-									<option value="Dec">December</option>
-								</Field>
-								{errors.month && touched.month ? (
-									<div className="error">{errors.month}</div>
-								) : null}
-							</div>
-
-							<div>
-								<label htmlFor="year">Year</label>
-								<Field id="year" name="year" type="text" />
-								{errors.year && touched.year ? (
-									<div className="error">{errors.year}</div>
-								) : null}
-							</div>
-
-							<div>
-								<label htmlFor="reading">Index</label>
-								<Field
-									id="reading"
-									name="reading"
-									type="number"
-								/>
-								{errors.reading && touched.reading ? (
-									<div className="error">
-										{errors.reading}
-									</div>
-								) : null}
-							</div>
-
-							<div>
-								<label htmlFor="readingDate">
-									Reading Date
-								</label>
-								<Field
-									id="readingDate"
-									name="readingDate"
-									type="date"
-								/>
-								{errors.readingDate && touched.readingDate ? (
-									<div className="error">
-										{errors.readingDate}
-									</div>
-								) : null}
-							</div>
-
-							<button type="submit" className="btn">
-								Save
-							</button>
-							<button
-								type="reset"
-								className="btn btn-outline ml-4 border-0"
-							>
-								Reset
-							</button>
-						</Form>
-					)}
-				</Formik>
+									Reset
+								</button>
+							</Form>
+						)}
+					</Formik>
+				</>
 			)}
 			{isSubmitted && (
 				<div className="text-green-500 text-xl text-center">

@@ -4,10 +4,6 @@
 
 .form {
 	@apply max-w-xl;
-
-	& > div {
-		@apply mb-8;
-	}
 }
 
 input[type="text"],
@@ -15,6 +11,7 @@ input[type="email"],
 input[type="number"],
 input[type="date"],
 input[type="password"],
+input[type="phone"],
 select {
 	@apply border border-gray-300 rounded w-full font-normal py-3 px-2.5 focus:border-wom-primary focus:outline-none;
 	

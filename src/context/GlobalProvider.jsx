@@ -24,9 +24,10 @@ export const GlobalContextProvider = ({ children }) => {
 			// Get signedin user email as ref for apartments filtering.
 			const userEmail = user.emailAddresses[0].emailAddress;
 
-			// Fetch apartments from API.
+			// Fetch data from API.
 			const fetchData = async () => {
 				try {
+					// Get apartments data from API.
 					const apartmentsData = await api.get('/apartments');
 					setApartments(apartmentsData.data);
 
@@ -35,6 +36,7 @@ export const GlobalContextProvider = ({ children }) => {
 					);
 					setApartment(userApartment[0]);
 
+					// Get readings data from API.
 					const readingsData = await api.get('/readings');
 					setReadings(readingsData.data);
 				} catch (error) {
@@ -50,6 +52,24 @@ export const GlobalContextProvider = ({ children }) => {
 		}
 	}, [isSignedIn, user, getToken]);
 
+	// Function for apartment update
+	const updateApartment = (updatedApartment) => {
+		setApartments(prevApartments => {
+			return prevApartments.map(apartment =>
+				apartment._id === updatedApartment._id ? updatedApartment : apartment
+			);
+		});
+	};
+
+	// Function for reading update
+	const updateReading = (updatedReading) => {
+		setReadings(prevReadings => {
+			return prevReadings.map(reading =>
+				reading._id === updatedReading._id ? updatedReading : reading
+			);
+		});
+	};
+
 	return (
 		<GlobalContext.Provider
 			value={{
@@ -60,6 +80,8 @@ export const GlobalContextProvider = ({ children }) => {
 				setApartments,
 				userRole,
 				readings,
+				updateApartment,
+				updateReading,
 			}}
 		>
 			{isSignedIn && isLoading ? <Loader2 /> : children}

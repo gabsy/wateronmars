@@ -1,5 +1,6 @@
 import ApartmentCard from './ApartmentCard';
 import useGlobalContext from '../../hooks/useGlobalContext';
+import { motion } from 'framer-motion';
 
 const ApartmentsList = () => {
 	const apartments = useGlobalContext().apartments;
@@ -9,7 +10,14 @@ const ApartmentsList = () => {
 
 	return (
 		<>
-			<div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+			<motion.div
+				className="grid grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{
+					duration: 0.3,
+				}}
+			>
 				{apartments.length > 0 &&
 					apartments.map((apartment) => {
 						return (
@@ -19,7 +27,7 @@ const ApartmentsList = () => {
 							/>
 						);
 					})}
-			</div>
+			</motion.div>
 		</>
 	);
 };
