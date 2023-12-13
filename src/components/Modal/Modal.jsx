@@ -2,7 +2,7 @@ import './Modal.css';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
-const Modal = ({ content, title, isOpen, onClose }) => {
+const Modal = ({ content, isOpen, onClose }) => {
 	return (
 		<>
 			{isOpen && (
@@ -16,7 +16,6 @@ const Modal = ({ content, title, isOpen, onClose }) => {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 					>
-						<h2 className="text-3xl font-bold pb-10">{title}</h2>
 						{content}
 						<button className="close-modal" onClick={onClose}>
 							<XMarkIcon className="h-8 w-8 inline-block align-top transition-all stroke-gray-500 hover:rotate-90 p-2 bg-slate-100 rounded-full" />

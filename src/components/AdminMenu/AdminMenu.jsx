@@ -30,7 +30,6 @@ const AdminMenu = () => {
 			{selectedModal === 'addApartment' && (
 				<Modal
 					content={<AddApartmentForm />}
-					title="Add New Apartment"
 					isOpen={isOpen}
 					onClose={closeModal}
 				/>
@@ -47,7 +46,6 @@ const AdminMenu = () => {
 			{selectedModal === 'addReading' && (
 				<Modal
 					content={<AddReadingForm />}
-					title="Add New Reading"
 					isOpen={isOpen}
 					onClose={closeModal}
 				/>
