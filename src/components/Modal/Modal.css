@@ -4,9 +4,6 @@ body.active-modal {
 
 .modal,
 .overlay {
-    /* align-items: center;
-    justify-content: center;
-    display: flex; */
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -19,12 +16,19 @@ body.active-modal {
 
 .modal-content {
     background: #fff;
-    z-index: 10000;
+    left: 50%;
     max-width: 500px;
     position: absolute;
     top: 40%;
-    left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10000;
+
+    @media screen and (max-width: 768px) {
+        top: 40px;
+        overflow: scroll;
+        transform: translate(-50%, 0);
+        height: calc(100vh - 80px);
+    }
 }
 
 .close-modal {
@@ -32,4 +36,3 @@ body.active-modal {
     top: 16px;
     right: 16px;
 }
-
