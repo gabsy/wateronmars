@@ -40,11 +40,11 @@ const ReadingCard = ({
 
 	return (
 		<>
-			<div className="flex flex-col bg-white gap-8 px-7 py-7 rounded-3xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
+			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-3xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
 
 				{/* Reading card Actions */}
 				{userRole === 'admin' && (
-					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-4">
+					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-3">
 						{/* Edit reading */}
 						<button
 							onClick={() => openModal('editReading')}
@@ -111,14 +111,13 @@ const ReadingCard = ({
 						</p>
 					</div>
 				</div>
-				<div className="flex items-end justify-end gap-4 pt-5 border-t border-gray-200">
-					<div className="uppercase text-xs mr-1">Total amount:</div>
+				<div className="flex items-end justify-end gap-3 pt-5 border-t border-gray-200">
+					<div className="uppercase text-xs">Total amount:</div>
 					<div
 						className={`uppercase leading-none text-2xl font-semibold ${isPaidText}`}
 					>
 						{totalDue}
-						<span className="text-sm font-normal leading-none">
-							{' '}
+						<span className="text-sm font-normal leading-none ml-1">
 							RON
 						</span>
 					</div>
