@@ -6,7 +6,7 @@
 	height: var(--uib-size);
 	width: var(--uib-size);
 	animation: rotate calc(var(--uib-speed) * 4) linear infinite;
-  }
+}
 
 @keyframes rotate {
 	0% {
@@ -95,7 +95,7 @@
 	animation: orbit var(--uib-speed) linear var(--uib-d) infinite;
 }
 
-  @keyframes orbit {
+@keyframes orbit {
 	0% {
 		transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
 		opacity: 0.65;

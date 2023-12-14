@@ -3,7 +3,7 @@ node_modules
 dist
 build
 .env
-*.css
+# *.css
 *.lock
 *.md
 package-lock.json

@@ -1,32 +1,32 @@
 .hexagon {
-  position: relative;
-  margin: 0 1.5em;
-  width: 2.6em;
-  height: 3.8em;
-  border-radius: 1em/.5em;
-  background: #617AFF;
-  transition: opacity .5s;
-  flex-shrink: 0;
+	position: relative;
+	margin: 0 1.5em;
+	width: 2.6em;
+	height: 3.8em;
+	border-radius: 1em/0.5em;
+	background: #617aff;
+	transition: opacity 0.5s;
+	flex-shrink: 0;
 
-    &:before,
-    &:after {
-      position: absolute;
-      width: inherit;
-      height: inherit;
-      border-radius: inherit;
-      background: inherit;
-      content: '';
-    }
+	&:before,
+	&:after {
+		position: absolute;
+		width: inherit;
+		height: inherit;
+		border-radius: inherit;
+		background: inherit;
+		content: '';
+	}
 
-    &:before {
-      transform: rotate(60deg);
-    }
+	&:before {
+		transform: rotate(60deg);
+	}
 
-    &:after {
-      transform: rotate(-60deg);
-    }
+	&:after {
+		transform: rotate(-60deg);
+	}
 
-    @media (max-width: 768px) {
-      transform: scale(0.9);
-    }
+	@media (max-width: 768px) {
+		transform: scale(0.9);
+	}
 }
