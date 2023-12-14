@@ -6,7 +6,8 @@ import * as yup from 'yup';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const EditReadingForm = ({ readingId }) => {
-	const { updateReading, readings, apartments } = useGlobalContext();
+	const { dispatch, state } = useGlobalContext();
+	const { readings, apartments } = state;
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isUpdated, setIsUpdated] = useState(false);
 
@@ -54,7 +55,7 @@ const EditReadingForm = ({ readingId }) => {
 				setIsSubmitted(true);
 				console.log(response.data);
 				// Update apartment in global state
-				updateReading(readingData);
+				dispatch({ type: 'UPDATE_READINGS', payload: readingData });
 				setIsUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);

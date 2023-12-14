@@ -5,10 +5,11 @@ import { motion } from 'framer-motion';
 import ReadingCardPlaceholder from './ReadingCardPlaceholder';
 
 const ReadingsList = () => {
+	const { state } = useGlobalContext();
+	const { readings, apartment } = state;
 	const [isLoaded, setIsLoaded] = useState(false);
-	const readings = useGlobalContext().readings;
-	const apartmentId = useGlobalContext().apartment._id;
-	const { userRole } = useGlobalContext();
+	const apartmentId = apartment._id;
+	const { userRole } = state;
 
 	// Filter readings by apartment id and sort by readingDate
 	readings.sort((a, b) => new Date(b.readingDate) - new Date(a.readingDate));

@@ -3,7 +3,7 @@ import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
 
 const ApartmentsList = () => {
-	const apartments = useGlobalContext().apartments;
+	const { apartments } = useGlobalContext().state;
 
 	// Sort apartments by apartmentNo
 	apartments.sort((a, b) => a.apartmentNo - b.apartmentNo);

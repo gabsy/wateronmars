@@ -6,12 +6,12 @@ import useGlobalContext from '../../hooks/useGlobalContext';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const EditApartmentForm = ({ apartmentId }) => {
-	const { updateApartment, apartments } = useGlobalContext();
+	const { dispatch, state } = useGlobalContext();
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isUpdated, setIsUpdated] = useState(false);
 
 	// Get apartment by id
-	const apartment = apartments.find(
+	const apartment = state.apartments.find(
 		(apartment) => apartment._id === apartmentId
 	);
 
@@ -29,7 +29,7 @@ const EditApartmentForm = ({ apartmentId }) => {
 		const ownerName = values.ownerName;
 		const ownerPhoneNo = values.ownerPhoneNo;
 
-		const readingData = {
+		const apartmentData = {
 			_id: apartmentId,
 			apartmentNo,
 			ownerEmail,
@@ -40,11 +40,11 @@ const EditApartmentForm = ({ apartmentId }) => {
 		// API call to update apartment
 		const updateApartmentInBackend = async () => {
 			try {
-				const response = await api.put('/updateApartment', readingData);
+				const response = await api.put('/updateApartment', apartmentData);
 				setIsSubmitted(true);
 				console.log(response.data);
-				// Update apartment in global state
-				updateApartment(readingData);
+
+				dispatch({ type: 'UPDATE_APARTMENTS', payload: apartmentData });
 				setIsUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);

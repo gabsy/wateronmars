@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const AddReadingForm = () => {
-	const { apartments } = useGlobalContext();
+	const { apartments } = useGlobalContext().state;
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	// Validation Schema

@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
 	const { user, isSignedIn } = useUser();
 	const { signOut } = useClerk();
-	const { userRole } = useGlobalContext();
+	const { userRole } = useGlobalContext().state;
 	const condoLocation = import.meta.env.VITE_LOCATION;
 
 	return (

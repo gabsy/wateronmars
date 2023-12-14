@@ -7,11 +7,12 @@ import useGlobalContext from '../hooks/useGlobalContext';
 import { readingsFilterSorter } from '../utils/readingsUtils';
 
 const OverviewStats = () => {
-	const apartmentNo = useGlobalContext().apartment.apartmentNo;
-	const apartmentId = useGlobalContext().apartment._id;
-	const owner = useGlobalContext().apartment.ownerName;
-	const userEmail = useGlobalContext().user.emailAddresses[0].emailAddress;
-	const readings = useGlobalContext().readings;
+	const { state } = useGlobalContext();
+	const apartmentNo = state.apartment.apartmentNo;
+	const apartmentId = state.apartment._id;
+	const owner = state.apartment.ownerName;
+	const userEmail = state.user.emailAddresses[0].emailAddress;
+	const readings = state.readings;
 	const filteredSortedReadings = readingsFilterSorter(readings, apartmentId);
 	const lastIndex = filteredSortedReadings[0].reading;
 	const consumption =

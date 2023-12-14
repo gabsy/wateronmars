@@ -35,7 +35,7 @@ const ReadingCard = ({
 	const totalDue = Math.ceil(cubicMeters * priceCubicMeter);
 
 	const deleteReading = () => {
-		console.log('delete reading');
+		// console.log('delete reading');
 	}
 
 	return (
@@ -78,7 +78,7 @@ const ReadingCard = ({
 							{isPaid ? 'Paid.\nThank you!' : 'Payment\nOverdue'}
 						</h3>
 					</div>
-					<div className="flex text-xs gap-2 items-center rounded-full px-2 py-1 mt-2 bg-gray-600 text-white">
+					<div className="flex text-sm gap-2 items-center rounded-full px-2.5 py-1 mt-2 bg-gray-600 text-white">
 						{monthShort} {year}
 					</div>
 				</div>
