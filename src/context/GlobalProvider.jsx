@@ -54,14 +54,18 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				apartments: state.apartments.map((apartment) =>
-					apartment._id === action.payload._id ? action.payload : apartment,
+					apartment._id === action.payload._id
+						? action.payload
+						: apartment,
 				),
 			};
 		case 'UPDATE_READINGS':
 			return {
 				...state,
 				readings: state.readings.map((reading) =>
-					reading._id === action.payload._id ? action.payload : reading,
+					reading._id === action.payload._id
+						? action.payload
+						: reading,
 				),
 			};
 		default:
@@ -78,7 +82,6 @@ export const GlobalContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (isSignedIn) {
-
 			// Set user.
 			dispatch({ type: 'SET_USER', payload: user });
 
@@ -94,17 +97,26 @@ export const GlobalContextProvider = ({ children }) => {
 				try {
 					// Get/Set apartments data from API.
 					const apartmentsData = await api.get('/apartments');
-					dispatch({ type: 'SET_APARTMENTS', payload: apartmentsData.data });
+					dispatch({
+						type: 'SET_APARTMENTS',
+						payload: apartmentsData.data,
+					});
 
 					// Get/Set current user apartment
 					const userApartment = apartmentsData.data.filter(
 						(apartment) => apartment.ownerEmail === userEmail,
 					);
-					dispatch({ type: 'SET_APARTMENT', payload: userApartment[0] });
+					dispatch({
+						type: 'SET_APARTMENT',
+						payload: userApartment[0],
+					});
 
 					// Get/Set readings data from API.
 					const readingsData = await api.get('/readings');
-					dispatch({ type: 'SET_READINGS', payload: readingsData.data });
+					dispatch({
+						type: 'SET_READINGS',
+						payload: readingsData.data,
+					});
 				} catch (error) {
 					console.error('Error:', error);
 				} finally {

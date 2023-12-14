@@ -25,9 +25,7 @@ const EditReadingForm = ({ readingId }) => {
 	});
 
 	// Get reading by id
-	const reading = readings.find(
-		(reading) => reading._id === readingId
-	);
+	const reading = readings.find((reading) => reading._id === readingId);
 
 	// Handle Submit function
 	const handleSubmit = async (values) => {
@@ -107,7 +105,8 @@ const EditReadingForm = ({ readingId }) => {
 											);
 										})}
 									</Field>
-									{errors.apartmentId && touched.apartmentId ? (
+									{errors.apartmentId &&
+									touched.apartmentId ? (
 										<div className="error">
 											{errors.apartmentId}
 										</div>
@@ -130,7 +129,9 @@ const EditReadingForm = ({ readingId }) => {
 										<option value="Dec">December</option>
 									</Field>
 									{errors.month && touched.month ? (
-										<div className="error">{errors.month}</div>
+										<div className="error">
+											{errors.month}
+										</div>
 									) : null}
 								</div>
 
@@ -138,7 +139,9 @@ const EditReadingForm = ({ readingId }) => {
 									<label htmlFor="year">Year</label>
 									<Field id="year" name="year" type="text" />
 									{errors.year && touched.year ? (
-										<div className="error">{errors.year}</div>
+										<div className="error">
+											{errors.year}
+										</div>
 									) : null}
 								</div>
 
@@ -165,7 +168,8 @@ const EditReadingForm = ({ readingId }) => {
 										name="readingDate"
 										type="date"
 									/>
-									{errors.readingDate && touched.readingDate ? (
+									{errors.readingDate &&
+									touched.readingDate ? (
 										<div className="error">
 											{errors.readingDate}
 										</div>
@@ -178,7 +182,12 @@ const EditReadingForm = ({ readingId }) => {
 										type="checkbox"
 										className="inline-block"
 									/>
-									<label htmlFor="paid" className="inline-block ml-3">Paid</label>
+									<label
+										htmlFor="paid"
+										className="inline-block ml-3"
+									>
+										Paid
+									</label>
 								</div>
 								<button type="submit" className="btn">
 									Save

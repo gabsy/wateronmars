@@ -68,14 +68,17 @@ const AddApartmentForm = () => {
 										name="apartmentNo"
 										type="number"
 									/>
-									{errors.apartmentNo && touched.apartmentNo ? (
+									{errors.apartmentNo &&
+									touched.apartmentNo ? (
 										<div className="error">
 											{errors.apartmentNo}
 										</div>
 									) : null}
 								</div>
 								<div>
-									<label htmlFor="ownerName">Owner Name</label>
+									<label htmlFor="ownerName">
+										Owner Name
+									</label>
 									<Field
 										id="ownerName"
 										name="ownerName"
@@ -89,7 +92,9 @@ const AddApartmentForm = () => {
 								</div>
 
 								<div>
-									<label htmlFor="ownerEmail">Owner Email</label>
+									<label htmlFor="ownerEmail">
+										Owner Email
+									</label>
 									<Field
 										id="ownerEmail"
 										name="ownerEmail"
@@ -111,7 +116,8 @@ const AddApartmentForm = () => {
 										name="ownerPhoneNo"
 										type="phone"
 									/>
-									{errors.ownerPhoneNo && touched.ownerPhoneNo ? (
+									{errors.ownerPhoneNo &&
+									touched.ownerPhoneNo ? (
 										<div className="error">
 											{errors.ownerPhoneNo}
 										</div>

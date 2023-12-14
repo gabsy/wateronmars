@@ -6,7 +6,6 @@ const Container = ({ children, title }) => {
 					{title}
 				</h1>
 			)}
-
 			{children}
 		</div>
 	);

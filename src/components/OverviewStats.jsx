@@ -79,8 +79,9 @@ const OverviewStats = () => {
 						Total due
 					</p>
 					<h3
-						className={`text-3xl lg:text-3xl whitespace-nowrap font-semibold ${totalDue > 0 ? 'text-red-600' : ''
-							}`}
+						className={`text-3xl lg:text-3xl whitespace-nowrap font-semibold ${
+							totalDue > 0 ? 'text-red-600' : ''
+						}`}
 					>
 						{totalDue}
 						<span className="text-base font-normal"> RON</span>

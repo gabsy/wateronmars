@@ -36,12 +36,11 @@ const ReadingCard = ({
 
 	const deleteReading = () => {
 		// console.log('delete reading');
-	}
+	};
 
 	return (
 		<>
 			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-3xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
-
 				{/* Reading card Actions */}
 				{userRole === 'admin' && (
 					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-3">
@@ -72,8 +71,9 @@ const ReadingCard = ({
 							/>
 						</div>
 						<h3
-							className={`font-semibold text-md leading-tight whitespace-pre-line ${isPaid ? 'text-wom-primary' : ''
-								}`}
+							className={`font-semibold text-md leading-tight whitespace-pre-line ${
+								isPaid ? 'text-wom-primary' : ''
+							}`}
 						>
 							{isPaid ? 'Paid.\nThank you!' : 'Payment\nOverdue'}
 						</h3>

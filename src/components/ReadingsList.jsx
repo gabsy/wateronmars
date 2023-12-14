@@ -36,7 +36,7 @@ const ReadingsList = () => {
 	// Framer motion variants
 	const listContainer = {
 		hidden: { opacity: 1 },
-		visible: { opacity: 1, transition: { staggerChildren: 0.09 }, },
+		visible: { opacity: 1, transition: { staggerChildren: 0.09 } },
 	};
 
 	const listItem = {

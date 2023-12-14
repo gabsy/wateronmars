@@ -100,7 +100,8 @@ const AddReadingForm = () => {
 											);
 										})}
 									</Field>
-									{errors.apartmentId && touched.apartmentId ? (
+									{errors.apartmentId &&
+									touched.apartmentId ? (
 										<div className="error">
 											{errors.apartmentId}
 										</div>
@@ -123,7 +124,9 @@ const AddReadingForm = () => {
 										<option value="Dec">December</option>
 									</Field>
 									{errors.month && touched.month ? (
-										<div className="error">{errors.month}</div>
+										<div className="error">
+											{errors.month}
+										</div>
 									) : null}
 								</div>
 
@@ -131,7 +134,9 @@ const AddReadingForm = () => {
 									<label htmlFor="year">Year</label>
 									<Field id="year" name="year" type="text" />
 									{errors.year && touched.year ? (
-										<div className="error">{errors.year}</div>
+										<div className="error">
+											{errors.year}
+										</div>
 									) : null}
 								</div>
 
@@ -158,7 +163,8 @@ const AddReadingForm = () => {
 										name="readingDate"
 										type="date"
 									/>
-									{errors.readingDate && touched.readingDate ? (
+									{errors.readingDate &&
+									touched.readingDate ? (
 										<div className="error">
 											{errors.readingDate}
 										</div>

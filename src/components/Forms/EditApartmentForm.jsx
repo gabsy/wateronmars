@@ -12,7 +12,7 @@ const EditApartmentForm = ({ apartmentId }) => {
 
 	// Get apartment by id
 	const apartment = state.apartments.find(
-		(apartment) => apartment._id === apartmentId
+		(apartment) => apartment._id === apartmentId,
 	);
 
 	// Validation Schema
@@ -40,7 +40,10 @@ const EditApartmentForm = ({ apartmentId }) => {
 		// API call to update apartment
 		const updateApartmentInBackend = async () => {
 			try {
-				const response = await api.put('/updateApartment', apartmentData);
+				const response = await api.put(
+					'/updateApartment',
+					apartmentData,
+				);
 				setIsSubmitted(true);
 				console.log(response.data);
 
@@ -79,14 +82,17 @@ const EditApartmentForm = ({ apartmentId }) => {
 										name="apartmentNo"
 										type="number"
 									/>
-									{errors.apartmentNo && touched.apartmentNo ? (
+									{errors.apartmentNo &&
+									touched.apartmentNo ? (
 										<div className="error">
 											{errors.apartmentNo}
 										</div>
 									) : null}
 								</div>
 								<div>
-									<label htmlFor="ownerName">Owner Name</label>
+									<label htmlFor="ownerName">
+										Owner Name
+									</label>
 									<Field
 										id="ownerName"
 										name="ownerName"
@@ -100,7 +106,9 @@ const EditApartmentForm = ({ apartmentId }) => {
 								</div>
 
 								<div>
-									<label htmlFor="ownerEmail">Owner Email</label>
+									<label htmlFor="ownerEmail">
+										Owner Email
+									</label>
 									<Field
 										id="ownerEmail"
 										name="ownerEmail"
@@ -122,7 +130,8 @@ const EditApartmentForm = ({ apartmentId }) => {
 										name="ownerPhoneNo"
 										type="phone"
 									/>
-									{errors.ownerPhoneNo && touched.ownerPhoneNo ? (
+									{errors.ownerPhoneNo &&
+									touched.ownerPhoneNo ? (
 										<div className="error">
 											{errors.ownerPhoneNo}
 										</div>
