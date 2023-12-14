@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
-import useGlobalContext from '../hooks/useGlobalContext';
+import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {

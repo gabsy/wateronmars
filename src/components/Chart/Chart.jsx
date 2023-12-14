@@ -7,7 +7,7 @@ import {
 	ResponsiveContainer,
 } from 'recharts';
 
-import iconDrop from '../assets/icons/icon-drop.svg';
+import iconDrop from '../../assets/icons/icon-drop.svg';
 
 const Chart = ({ data }) => {
 	return (
@@ -78,7 +78,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 				{payload.map((ele, index) => (
 					<div
 						key={index}
-						className="mt-1 flex text-sm text-wom-primary"
+						className="mt-1 flex text-sm font-semibold text-wom-primary"
 					>
 						<img src={iconDrop} className="baseline mr-1" />{' '}
 						{ele.value} {ele.name}

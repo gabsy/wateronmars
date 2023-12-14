@@ -1,4 +1,4 @@
-import Chart from './Chart';
+import Chart from '../Chart';
 import OverviewStats from './OverviewStats';
 import { motion } from 'framer-motion';
 

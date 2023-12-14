@@ -3,8 +3,8 @@ import {
 	EnvelopeIcon,
 	UserIcon,
 } from '@heroicons/react/24/outline';
-import useGlobalContext from '../hooks/useGlobalContext';
-import { readingsFilterSorter } from '../utils/readingsUtils';
+import useGlobalContext from '../../hooks/useGlobalContext';
+import { readingsFilterSorter } from '../../utils/readingsUtils';
 
 const OverviewStats = () => {
 	const { state } = useGlobalContext();

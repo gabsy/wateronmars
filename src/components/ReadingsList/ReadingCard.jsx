@@ -1,12 +1,12 @@
-import iconFlag from '../assets/icons/icon-flag.svg';
-import iconCheck from '../assets/icons/icon-check.svg';
-import iconDrop from '../assets/icons/icon-drop.svg';
-import { formatDate } from '../utils/formatDate';
+import iconFlag from '../../assets/icons/icon-flag.svg';
+import iconCheck from '../../assets/icons/icon-check.svg';
+import iconDrop from '../../assets/icons/icon-drop.svg';
+import { formatDate } from '../../utils/formatDate';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 
-import Modal from './Modal';
-import { EditReadingForm } from './Forms';
-import useModal from '../hooks/useModal';
+import Modal from '../Modal';
+import { EditReadingForm } from '../Forms';
+import useModal from '../../hooks/useModal';
 
 const ReadingCard = ({
 	readingId,

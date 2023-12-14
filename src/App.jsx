@@ -4,11 +4,9 @@ import {
 	Route,
 	Navigate,
 } from 'react-router-dom';
-// import Layout from './components/Layout';
 import Navbar from './components/Navbar';
 import AdminMenu from './components/AdminMenu';
 import Home from './pages/Home';
-// import AddReading from './pages/AddReading';
 import Apartments from './pages/Apartments';
 import SignIn from './pages/SignIn';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';

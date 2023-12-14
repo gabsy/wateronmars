@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReadingCard from './ReadingCard';
-import useGlobalContext from '../hooks/useGlobalContext';
+import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
 import ReadingCardPlaceholder from './ReadingCardPlaceholder';
 
