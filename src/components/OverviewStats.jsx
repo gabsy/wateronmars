@@ -36,7 +36,7 @@ const OverviewStats = () => {
 	});
 
 	return (
-		<div className="flex flex-col w-full lg:w-2/5 gap-16 items-start">
+		<div className="flex flex-col w-full lg:w-2/5 gap-16 lg:gap-20 items-start">
 			<div className="flex md:justify-start items-start gap-5">
 				<BuildingOfficeIcon className="h-11 w-11 stroke-wom-primary fill-wom-primary stroke-1.5" />
 				<div className="leading-8">
@@ -55,7 +55,7 @@ const OverviewStats = () => {
 					</a>
 				</div>
 			</div>
-			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-3 lg:gap-8">
+			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-10">
 				<div className="whitespace-nowrap">
 					<p className="text-xs pb-2 sm:pb-3 leading-1 text-slate-400 uppercase">
 						Last index reading

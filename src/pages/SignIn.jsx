@@ -39,7 +39,7 @@ const SignIn = () => {
 					className="relative flex-1 hidden items-center justify-center bg-gray-900 lg:flex p-16"
 					style={{
 						backgroundImage:
-							'linear-gradient(-210deg, rgba(97, 122, 255, 0) 9.54%, rgba(97, 122, 255, 0.50) 39.2%, rgba(97, 122, 255, 0.07) 67.55%)',
+							'linear-gradient(-210deg, rgba(97, 122, 255, 0) 9.54%, rgba(97, 122, 255, 0.55) 39.2%, rgba(97, 122, 255, 0.07) 67.55%)',
 					}}
 				>
 					<div className="relative z-10 w-full space-y-24">

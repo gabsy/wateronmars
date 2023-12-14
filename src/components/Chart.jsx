@@ -12,7 +12,7 @@ import iconDrop from '../assets/icons/icon-drop.svg';
 const Chart = ({ data }) => {
 	return (
 		<div className="font-light text-sm w-3/5 hidden lg:block">
-			<ResponsiveContainer width="100%" height={280}>
+			<ResponsiveContainer width="100%" height={300}>
 				<AreaChart
 					data={data}
 					margin={{ top: 10, right: 0, left: -24, bottom: 0 }}

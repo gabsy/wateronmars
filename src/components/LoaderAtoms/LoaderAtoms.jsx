@@ -1,4 +1,4 @@
-import './Loader2.css';
+import './LoaderAtoms.css';
 
 const Loader2 = () => {
 	return (
