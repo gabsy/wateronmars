@@ -59,7 +59,7 @@ const OverviewStats = () => {
 			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-10">
 				<div className="whitespace-nowrap">
 					<p className="text-xs pb-2 sm:pb-3 leading-1 text-slate-400 uppercase">
-						Last index reading
+						Last reading
 					</p>
 					<h3 className="text-3xl lg:text-3xl font-semibold">
 						{lastIndex}

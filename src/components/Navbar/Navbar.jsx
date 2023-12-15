@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { MapPinIcon } from '@heroicons/react/24/outline';
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import {
+	ArrowRightOnRectangleIcon,
+	Bars3BottomRightIcon,
+} from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
@@ -30,24 +33,26 @@ const Navbar = () => {
 				</div>
 				{isSignedIn && (
 					<>
-						<div className="flex-1 text-center">
+						<div className="flex-1 text-center hidden lg:block">
 							<MapPinIcon className="h-5 w-5 inline-block align-top mr-2" />
 							{condoLocation}
 						</div>
-						<ul className="flex items-center flex-1 justify-end">
-							<li className="mx-2 leading-4">
-								<UserIcon className="h-5 w-5 inline-block align-bottom mr-2 fill-wom-primary" />
-								{user.fullName}
+						<ul className="hidden lg:flex items-center flex-1 justify-end">
+							<li className="ml-5">
+								<UserIcon className="h-6 w-6 inline-block align-bottom lg:mr-2 fill-wom-primary" />
+								<span className="hidden lg:inline">
+									{user.fullName}
+								</span>
 								<span className="inline-block align-middle text-[10px] text-white bg-orange-500 rounded-sm uppercase ml-2 px-1 py-0.25">
 									ap. 3
 								</span>
 								{userRole === 'admin' && (
-									<span className="inline-block align-middle text-[10px] text-white bg-wom-primary rounded-sm uppercase ml-1 px-1 py-0.25">
+									<span className="align-middle text-[10px] text-white bg-wom-primary rounded-sm uppercase ml-1 px-1 py-0.25">
 										{userRole}
 									</span>
 								)}
 							</li>
-							<li className="ml-3">
+							<li className="ml-5">
 								<button
 									className="bg-transparent cursor-pointer hover:text-wom-primary"
 									onClick={() => signOut()}
@@ -57,6 +62,12 @@ const Navbar = () => {
 								</button>
 							</li>
 						</ul>
+						<button
+							className="bg-transparent cursor-pointer hover:text-wom-primary ml-6"
+							title="Menu"
+						>
+							<Bars3BottomRightIcon className="h-7 w-7 inline-block align-middle lg:hidden stroke-wom-primary" />
+						</button>
 					</>
 				)}
 			</nav>
