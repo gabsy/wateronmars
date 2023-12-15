@@ -1,9 +1,5 @@
 body.active-modal {
 	overflow-y: hidden;
-
-	& .modal-content {
-		transform: translate(-50%, -50%) scale(1);
-	}
 }
 
 .modal,
@@ -25,9 +21,7 @@ body.active-modal {
 	max-width: 500px;
 	position: absolute;
 	top: 40%;
-	transform: translate(-50%, -50%) scale(0.5);
-	transition: all 0.3s ease-in-out;
-	transition-delay: 0.3s;
+	transform: translate(-50%, -50%);
 	z-index: 10000;
 
 	@media screen and (max-width: 768px) {

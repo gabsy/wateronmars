@@ -13,8 +13,17 @@ const Modal = ({ content, isOpen, onClose }) => {
 					></div>
 					<motion.div
 						className="modal-content w-full rounded-lg p-6 md:p-12"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
+						initial={{
+							opacity: 0,
+							scale: 0.94,
+							translateX: '-50%',
+							translateY: '-50%',
+						}}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{
+							duration: 0.5,
+							ease: [0, 0.71, 0.2, 1.01],
+						}}
 					>
 						{content}
 						<button className="close-modal" onClick={onClose}>
