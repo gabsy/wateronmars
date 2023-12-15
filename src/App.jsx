@@ -11,6 +11,7 @@ import Apartments from './pages/Apartments';
 import SignIn from './pages/SignIn';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import ProtectedRoute from './components/ProtectedRoute';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const App = () => {
 	return (
@@ -64,6 +65,7 @@ const App = () => {
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</Router>
+			<SpeedInsights />
 		</div>
 	);
 };
