@@ -9,7 +9,7 @@ const AdminMenu = () => {
 	const { isOpen, openModal, closeModal, selectedModal } = useModal();
 
 	return (
-		<div className="max-w-screen-2xl mx-auto px-6 pb-8 flex justify-center gap-6 -mt-8">
+		<div className="max-w-screen-2xl mx-auto px-6 pb-8 flex justify-end gap-6 -mt-8">
 			{/* Link to apartments list page */}
 			<Link
 				to="/apartments"
