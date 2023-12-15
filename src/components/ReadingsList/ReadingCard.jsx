@@ -15,11 +15,15 @@ const ReadingCard = ({
 	reading,
 	readingDate,
 	paid,
-	prevReading,
+	// prevReading,
+	consumption,
 	userRole,
 }) => {
 	// Set the oldest reading as previous reading
-	prevReading = prevReading || reading;
+	// prevReading = prevReading || reading;
+
+	// Set consumption to 0 if it is not a number
+	consumption = isNaN(consumption) ? 0 : consumption;
 
 	const { isOpen, openModal, closeModal, selectedModal } = useModal();
 	const isPaid = paid;
@@ -31,8 +35,9 @@ const ReadingCard = ({
 	const monthShort = month.substring(0, 3);
 	const priceCubicMeter = import.meta.env.VITE_PRICE_MC;
 	const formatedReadingDate = formatDate(readingDate);
-	const cubicMeters = reading - prevReading;
-	const totalDue = Math.ceil(cubicMeters * priceCubicMeter);
+	// const cubicMeters = reading - prevReading;
+	// const totalDue = Math.ceil(cubicMeters * priceCubicMeter);
+	const totalDue = Math.ceil(consumption * priceCubicMeter);
 
 	const deleteReading = () => {
 		// console.log('delete reading');
@@ -40,7 +45,7 @@ const ReadingCard = ({
 
 	return (
 		<>
-			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-3xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
+			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-2xl hover:scale-105 hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
 				{/* Reading card Actions */}
 				{userRole === 'admin' && (
 					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-3">
@@ -106,7 +111,7 @@ const ReadingCard = ({
 							Consumption
 						</p>
 						<p className="text-2xl font-medium">
-							{cubicMeters}
+							{consumption}
 							<span className="text-sm font-normal"> mc</span>
 						</p>
 					</div>

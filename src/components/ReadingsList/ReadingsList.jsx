@@ -80,13 +80,17 @@ const ReadingsList = () => {
 								? filteredReadings[index + 1]
 								: 0;
 
+						const consumption =
+							reading.reading - prevReading.reading;
+
 						return (
 							<motion.div key={index} variants={listItem}>
 								<ReadingCard
 									readingId={reading._id}
 									month={reading.month}
 									year={reading.year}
-									prevReading={prevReading.reading}
+									// prevReading={prevReading.reading}
+									consumption={consumption}
 									reading={reading.reading}
 									readingDate={reading.readingDate}
 									paid={reading.paid}
