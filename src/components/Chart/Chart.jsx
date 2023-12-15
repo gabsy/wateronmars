@@ -38,7 +38,7 @@ const Chart = ({ data }) => {
 							/>
 						</linearGradient>
 					</defs>
-					<XAxis dataKey="name" stroke="#999" strokeWidth="0" />
+					<XAxis dataKey="month" stroke="#999" strokeWidth="0" />
 					<YAxis
 						stroke="#999"
 						strokeWidth="0"
