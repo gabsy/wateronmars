@@ -39,7 +39,7 @@ const Navbar = () => {
 						</div>
 						<ul className="hidden lg:flex items-center flex-1 justify-end">
 							<li className="ml-5">
-								<UserIcon className="h-6 w-6 inline-block align-bottom lg:mr-2 fill-wom-primary" />
+								<UserIcon className="h-5 w-5 inline-block align-top lg:mr-2 fill-wom-primary" />
 								<span className="hidden lg:inline">
 									{user.fullName}
 								</span>
