@@ -22,12 +22,10 @@ const AddReadingForm = () => {
 		readingDate: yup.string().required('Reading Date is required'),
 	});
 
-	// Get previous month
-	const currentDate = new Date();
-	currentDate.setMonth(currentDate.getMonth() - 1);
-	const previousMonth = currentDate.toLocaleString('default', {
-		month: 'short',
-	});
+	// Get previous month to display as default option
+	const previousMonth = new Date(
+		new Date().setMonth(new Date().getMonth() - 1),
+	).toLocaleString('default', { month: 'short' });
 
 	// Handle Submit function
 	const handleSubmit = async (values) => {

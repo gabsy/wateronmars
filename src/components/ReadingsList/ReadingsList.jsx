@@ -101,7 +101,7 @@ const ReadingsList = () => {
 					})}
 
 				{!isLoaded &&
-					cardLoadingPlaceholder.map((card, index) => {
+					cardLoadingPlaceholder.map((index) => {
 						return <ReadingCardPlaceholder key={index} />;
 					})}
 			</motion.div>
