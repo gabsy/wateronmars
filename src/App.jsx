@@ -46,22 +46,6 @@ const App = () => {
 							</ProtectedRoute>
 						}
 					/>
-					{/* <Route
-						path="add-reading"
-						element={
-							<ProtectedRoute allowedRoles={['admin']}>
-								<AddReading />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="/edit-reading"
-						element={
-							<ProtectedRoute allowedRoles={['admin']}>
-								<AddReading />
-							</ProtectedRoute>
-						}
-					/> */}
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</Router>
