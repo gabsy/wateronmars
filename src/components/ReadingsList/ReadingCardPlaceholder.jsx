@@ -1,4 +1,4 @@
-const MonthCardPlaceholder = () => {
+const ReadingCardPlaceholder = () => {
 	return (
 		<div className="w-full bg-white p-8 rounded-3xl">
 			<div className="animate-pulse duration-75 flex space-x-4">
@@ -24,4 +24,4 @@ const MonthCardPlaceholder = () => {
 	);
 };
 
-export default MonthCardPlaceholder;
+export default ReadingCardPlaceholder;
