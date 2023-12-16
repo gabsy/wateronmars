@@ -23,7 +23,6 @@ const SignIn = () => {
 			})
 			.then((result) => {
 				if (result.status === 'complete') {
-					console.log(result);
 					setActive({ session: result.createdSessionId });
 				} else {
 					console.log(result);
