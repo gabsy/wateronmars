@@ -14,7 +14,7 @@ const initialState = {
 	apartments: [],
 	readings: [],
 	user: {},
-	userRole: '',
+	userRole: null,
 };
 
 // Reducer
@@ -133,7 +133,11 @@ export const GlobalContextProvider = ({ children }) => {
 
 	return (
 		<GlobalContext.Provider value={{ state, dispatch }}>
-			{isSignedIn && isLoading ? <LoaderAtoms /> : children}
+			{isSignedIn && !isLoading && state.userRole !== null ? (
+				children
+			) : (
+				<LoaderAtoms />
+			)}
 		</GlobalContext.Provider>
 	);
 };
