@@ -133,7 +133,7 @@ export const GlobalContextProvider = ({ children }) => {
 
 	return (
 		<GlobalContext.Provider value={{ state, dispatch }}>
-			{isLoading ? <LoaderAtoms /> : children}
+			{isSignedIn && isLoading ? <LoaderAtoms /> : children}
 		</GlobalContext.Provider>
 	);
 };
