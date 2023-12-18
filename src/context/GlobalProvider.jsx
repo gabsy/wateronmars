@@ -122,22 +122,18 @@ export const GlobalContextProvider = ({ children }) => {
 					console.error('Error:', error);
 				} finally {
 					setTimeout(() => {
-						setIsLoading(false);
+						state.userRole !== null ? setIsLoading(false) : null;
 					}, 800);
 				}
 			};
 
 			fetchData();
 		}
-	}, [isSignedIn, user, session]);
+	}, [isSignedIn, user, session, state.userRole]);
 
 	return (
 		<GlobalContext.Provider value={{ state, dispatch }}>
-			{isSignedIn && !isLoading && state.userRole !== null ? (
-				children
-			) : (
-				<LoaderAtoms />
-			)}
+			{isLoading ? <LoaderAtoms /> : children}
 		</GlobalContext.Provider>
 	);
 };
