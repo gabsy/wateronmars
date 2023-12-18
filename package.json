@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@clerk/clerk-react": "^4.27.0",
 		"@heroicons/react": "^2.0.18",
+		"@uidotdev/usehooks": "^2.4.1",
 		"@vercel/speed-insights": "^1.0.2",
 		"autoprefixer": "^10.4.16",
 		"axios": "^1.5.1",
