@@ -41,9 +41,14 @@ const App = () => {
 					<Route
 						path="apartments"
 						element={
-							<ProtectedRoute allowedRoles={['admin']}>
-								<Apartments />
-							</ProtectedRoute>
+							<>
+								<ProtectedRoute allowedRoles={['admin']}>
+									<Apartments />
+								</ProtectedRoute>
+								<SignedOut>
+									<Navigate to="/" replace />
+								</SignedOut>
+							</>
 						}
 					/>
 					<Route path="*" element={<Navigate to="/" replace />} />

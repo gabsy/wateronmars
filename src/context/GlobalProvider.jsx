@@ -122,14 +122,14 @@ export const GlobalContextProvider = ({ children }) => {
 					console.error('Error:', error);
 				} finally {
 					setTimeout(() => {
-						state.userRole !== null ? setIsLoading(false) : null;
+						setIsLoading(false);
 					}, 800);
 				}
 			};
 
 			fetchData();
 		}
-	}, [isSignedIn, user, session, state.userRole]);
+	}, [isSignedIn, user, session]);
 
 	return (
 		<GlobalContext.Provider value={{ state, dispatch }}>

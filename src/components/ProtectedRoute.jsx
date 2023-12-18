@@ -4,7 +4,9 @@ import { Navigate } from 'react-router-dom';
 const ProtectedRoute = ({ children, allowedRoles }) => {
 	const { userRole } = useGlobalContext().state;
 
-	return allowedRoles.includes(userRole) ? children : <Navigate to="/" />;
+	if (userRole !== null) {
+		return allowedRoles.includes(userRole) ? children : <Navigate to="/" />;
+	}
 };
 
 export default ProtectedRoute;
