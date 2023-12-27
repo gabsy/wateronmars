@@ -35,6 +35,30 @@ const reducer = (state, action) => {
 				...state,
 				readings: action.payload,
 			};
+		case 'UPDATE_APARTMENTS':
+			return {
+				...state,
+				apartments: [...state.apartments, action.payload],
+			};
+		case 'UPDATE_READINGS':
+			return {
+				...state,
+				readings: [...state.readings, action.payload],
+			};
+		case 'DELETE_READING':
+			return {
+				...state,
+				readings: state.readings.filter(
+					(reading) => reading._id !== action.payload,
+				),
+			};
+		case 'DELETE_APARTMENT':
+			return {
+				...state,
+				apartments: state.apartments.filter(
+					(apartment) => apartment._id !== action.payload,
+				),
+			};
 		case 'SET_USER':
 			return {
 				...state,
@@ -50,7 +74,7 @@ const reducer = (state, action) => {
 				...state,
 				isLoading: action.payload,
 			};
-		case 'UPDATE_APARTMENTS':
+		case 'UPDATE_APARTMENT':
 			return {
 				...state,
 				apartments: state.apartments.map((apartment) =>
@@ -59,7 +83,7 @@ const reducer = (state, action) => {
 						: apartment,
 				),
 			};
-		case 'UPDATE_READINGS':
+		case 'UPDATE_READING':
 			return {
 				...state,
 				readings: state.readings.map((reading) =>
@@ -93,6 +117,9 @@ export const GlobalContextProvider = ({ children }) => {
 			// Get signedin user email as ref for apartments filtering.
 			const userEmail = user.emailAddresses[0].emailAddress;
 
+			// Timeout id for loader. Only for demo
+			let timeoutId;
+
 			// Fetch data from API.
 			const fetchData = async () => {
 				try {
@@ -121,13 +148,17 @@ export const GlobalContextProvider = ({ children }) => {
 				} catch (error) {
 					console.error('Error:', error);
 				} finally {
-					setTimeout(() => {
+					timeoutId = setTimeout(() => {
 						setIsLoading(false);
 					}, 800);
 				}
 			};
 
 			fetchData();
+
+			return () => {
+				clearTimeout(timeoutId);
+			};
 		}
 	}, [isSignedIn, user, session]);
 

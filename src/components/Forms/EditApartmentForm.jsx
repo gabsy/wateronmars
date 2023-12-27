@@ -3,12 +3,13 @@ import { useState } from 'react';
 import api from '../../api/defaults';
 import * as yup from 'yup';
 import useGlobalContext from '../../hooks/useGlobalContext';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import FormButtons from './FormButtons';
+import { ModalSuccess } from '../Modal';
 
-const EditApartmentForm = ({ apartmentId }) => {
+const EditApartmentForm = ({ apartmentId, onClose }) => {
 	const { dispatch, state } = useGlobalContext();
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [isUpdated, setIsUpdated] = useState(false);
+	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
 	// Get apartment by id
 	const apartment = state.apartments.find(
@@ -40,15 +41,15 @@ const EditApartmentForm = ({ apartmentId }) => {
 		// API call to update apartment
 		const updateApartmentInBackend = async () => {
 			try {
-				const response = await api.put(
-					'/updateApartment',
-					apartmentData,
-				);
-				setIsSubmitted(true);
-				console.log(response.data);
+				await api.put('/updateApartment', apartmentData);
 
-				dispatch({ type: 'UPDATE_APARTMENTS', payload: apartmentData });
-				setIsUpdated(true);
+				setIsSubmitted(true);
+				// Update apartments in global state
+				dispatch({
+					type: 'UPDATE_APARTMENT',
+					payload: apartmentData,
+				});
+				setIsStateUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);
 			}
@@ -137,26 +138,17 @@ const EditApartmentForm = ({ apartmentId }) => {
 										</div>
 									) : null}
 								</div>
-
-								<button type="submit" className="btn mt-8">
-									Save
-								</button>
-								<button
-									type="reset"
-									className="btn btn-outline ml-4 border-0"
-								>
-									Reset
-								</button>
+								<FormButtons onClose={onClose} />
 							</Form>
 						)}
 					</Formik>
 				</>
 			)}
-			{isSubmitted && isUpdated && (
-				<div className="text-green-500 text-xl">
-					<CheckCircleIcon className="w-20 h-20 align-top mb-5 mx-auto" />
-					<p>Apartment updated successfully!</p>
-				</div>
+			{isSubmitted && isStateUpdated && (
+				<ModalSuccess
+					content="Apartment updated successfully!"
+					onClose={onClose}
+				/>
 			)}
 		</>
 	);

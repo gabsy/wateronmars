@@ -3,11 +3,14 @@ import { Formik, Form, Field } from 'formik';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import api from '../../api/defaults';
 import * as yup from 'yup';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import FormButtons from './FormButtons';
+import { ModalSuccess } from '../Modal';
 
-const AddReadingForm = () => {
-	const { apartments } = useGlobalContext().state;
+const AddReadingForm = ({ onClose }) => {
+	const { dispatch } = useGlobalContext();
+	const apartments = useGlobalContext().state.apartments;
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
 	// Validation Schema
 	const validationSchema = yup.object().shape({
@@ -34,6 +37,7 @@ const AddReadingForm = () => {
 		const year = values.year;
 		const reading = values.reading;
 		const readingDate = values.readingDate;
+		const paid = values.paid;
 
 		const readingData = {
 			apartmentId,
@@ -41,6 +45,7 @@ const AddReadingForm = () => {
 			year,
 			reading,
 			readingDate,
+			paid,
 		};
 
 		// API call to insert new reading
@@ -48,7 +53,14 @@ const AddReadingForm = () => {
 			try {
 				const response = await api.post('/addReading', readingData);
 				setIsSubmitted(true);
-				console.log(response.data);
+				dispatch({
+					type: 'UPDATE_READINGS',
+					payload: {
+						_id: response.data.insertedId,
+						...readingData,
+					},
+				});
+				setIsStateUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);
 			}
@@ -68,6 +80,7 @@ const AddReadingForm = () => {
 							year: new Date().getFullYear().toString(),
 							reading: '',
 							readingDate: new Date().toISOString().slice(0, 10),
+							paid: false,
 						}}
 						onSubmit={handleSubmit}
 						validationSchema={validationSchema}
@@ -83,7 +96,11 @@ const AddReadingForm = () => {
 										id="apartmentId"
 										name="apartmentId"
 									>
-										<option value="" defaultValue>
+										<option
+											value=""
+											key="default"
+											defaultValue
+										>
 											Select apartment
 										</option>
 										{apartments.map((apartment) => {
@@ -153,6 +170,21 @@ const AddReadingForm = () => {
 								</div>
 
 								<div>
+									<Field
+										id="paid"
+										name="paid"
+										type="checkbox"
+										className="inline-block"
+									/>
+									<label
+										htmlFor="paid"
+										className="inline-block ml-3"
+									>
+										Paid
+									</label>
+								</div>
+
+								<div>
 									<label htmlFor="readingDate">
 										Reading Date
 									</label>
@@ -169,25 +201,17 @@ const AddReadingForm = () => {
 									) : null}
 								</div>
 
-								<button type="submit" className="btn">
-									Save
-								</button>
-								<button
-									type="reset"
-									className="btn btn-outline ml-4 border-0"
-								>
-									Reset
-								</button>
+								<FormButtons onClose={onClose} />
 							</Form>
 						)}
 					</Formik>
 				</>
 			)}
-			{isSubmitted && (
-				<div className="text-green-500 text-xl text-center">
-					<CheckCircleIcon className="w-20 h-20 align-top mb-5 mx-auto" />
-					<p>Reading added successfully!</p>
-				</div>
+			{isSubmitted && isStateUpdated && (
+				<ModalSuccess
+					content="Reading added successfully!"
+					onClose={onClose}
+				/>
 			)}
 		</>
 	);

@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import api from '../../api/defaults';
 import * as yup from 'yup';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import useGlobalContext from '../../hooks/useGlobalContext';
+import FormButtons from './FormButtons';
+import { ModalSuccess } from '../Modal';
 
-const AddApartmentForm = () => {
+const AddApartmentForm = ({ onClose }) => {
+	const { dispatch } = useGlobalContext();
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
 	// Validation Schema
 	const validationSchema = yup.object().shape({
@@ -22,7 +26,7 @@ const AddApartmentForm = () => {
 		const ownerName = values.ownerName;
 		const ownerPhoneNo = values.ownerPhoneNo;
 
-		const readingData = {
+		const apartmentData = {
 			apartmentNo,
 			ownerEmail,
 			ownerName,
@@ -32,9 +36,16 @@ const AddApartmentForm = () => {
 		// API call to insert new reading
 		const addApartment = async () => {
 			try {
-				const response = await api.post('/addApartment', readingData);
+				const response = await api.post('/addApartment', apartmentData);
 				setIsSubmitted(true);
-				console.log(response.data);
+				dispatch({
+					type: 'UPDATE_APARTMENTS',
+					payload: {
+						_id: response.data.insertedId,
+						...apartmentData,
+					},
+				});
+				setIsStateUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);
 			}
@@ -123,26 +134,17 @@ const AddApartmentForm = () => {
 										</div>
 									) : null}
 								</div>
-
-								<button type="submit" className="btn">
-									Save
-								</button>
-								<button
-									type="reset"
-									className="btn btn-outline ml-4 border-0"
-								>
-									Reset
-								</button>
+								<FormButtons onClose={onClose} />
 							</Form>
 						)}
 					</Formik>
 				</>
 			)}
-			{isSubmitted && (
-				<div className="text-green-500 font-bold text-xl">
-					<CheckCircleIcon className="w-20 h-20 align-top mb-5 mx-auto" />
-					<p>Apartment added successfully!</p>
-				</div>
+			{isSubmitted && isStateUpdated && (
+				<ModalSuccess
+					content="Apartment added successfully!"
+					onClose={onClose}
+				/>
 			)}
 		</>
 	);

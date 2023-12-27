@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Modal from '../Modal';
+import { Modal } from '../Modal';
 import { AddReadingForm, AddApartmentForm } from '../Forms';
 import { BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
@@ -29,7 +29,7 @@ const AdminMenu = () => {
 			</button>
 			{selectedModal === 'addApartment' && (
 				<Modal
-					content={<AddApartmentForm />}
+					content={<AddApartmentForm onClose={closeModal} />}
 					isOpen={isOpen}
 					onClose={closeModal}
 				/>
@@ -45,7 +45,7 @@ const AdminMenu = () => {
 			</button>
 			{selectedModal === 'addReading' && (
 				<Modal
-					content={<AddReadingForm />}
+					content={<AddReadingForm onClose={closeModal} />}
 					isOpen={isOpen}
 					onClose={closeModal}
 				/>

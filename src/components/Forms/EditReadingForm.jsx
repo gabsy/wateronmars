@@ -3,13 +3,14 @@ import { Formik, Form, Field } from 'formik';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import api from '../../api/defaults';
 import * as yup from 'yup';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import FormButtons from './FormButtons';
+import { ModalSuccess } from '../Modal';
 
-const EditReadingForm = ({ readingId }) => {
+const EditReadingForm = ({ readingId, onClose }) => {
 	const { dispatch, state } = useGlobalContext();
 	const { readings, apartments } = state;
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [isUpdated, setIsUpdated] = useState(false);
+	const [isStateUpdated, setisStateUpdated] = useState(false);
 
 	// Validation Schema
 	const validationSchema = yup.object().shape({
@@ -49,12 +50,11 @@ const EditReadingForm = ({ readingId }) => {
 		// API call to update reading
 		const updateReadingInBackend = async () => {
 			try {
-				const response = await api.put('/updateReading', readingData);
+				await api.put('/updateReading', readingData);
 				setIsSubmitted(true);
-				console.log(response.data);
-				// Update apartment in global state
-				dispatch({ type: 'UPDATE_READINGS', payload: readingData });
-				setIsUpdated(true);
+				// Update readings in global state
+				dispatch({ type: 'UPDATE_READING', payload: readingData });
+				setisStateUpdated(true);
 			} catch (error) {
 				console.error('Error:', error);
 			}
@@ -160,6 +160,21 @@ const EditReadingForm = ({ readingId }) => {
 								</div>
 
 								<div>
+									<Field
+										id="paid"
+										name="paid"
+										type="checkbox"
+										className="inline-block"
+									/>
+									<label
+										htmlFor="paid"
+										className="inline-block ml-3 mb-0"
+									>
+										Paid
+									</label>
+								</div>
+
+								<div>
 									<label htmlFor="readingDate">
 										Reading Date
 									</label>
@@ -175,39 +190,18 @@ const EditReadingForm = ({ readingId }) => {
 										</div>
 									) : null}
 								</div>
-								<div>
-									<Field
-										id="paid"
-										name="paid"
-										type="checkbox"
-										className="inline-block"
-									/>
-									<label
-										htmlFor="paid"
-										className="inline-block ml-3"
-									>
-										Paid
-									</label>
-								</div>
-								<button type="submit" className="btn">
-									Save
-								</button>
-								<button
-									type="reset"
-									className="btn btn-outline ml-4 border-0"
-								>
-									Reset
-								</button>
+
+								<FormButtons onClose={onClose} />
 							</Form>
 						)}
 					</Formik>
 				</>
 			)}
-			{isSubmitted && isUpdated && (
-				<div className="text-green-500 text-xl text-center">
-					<CheckCircleIcon className="w-20 h-20 align-top mb-5 mx-auto" />
-					<p>Reading updated successfully!</p>
-				</div>
+			{isSubmitted && isStateUpdated && (
+				<ModalSuccess
+					content="Reading updated successfully!"
+					onClose={onClose}
+				/>
 			)}
 		</>
 	);

@@ -1,3 +1,4 @@
+import ModalSuccess from './ModalSuccess';
 import Modal from './Modal';
 
-export default Modal;
+export { Modal, ModalSuccess };

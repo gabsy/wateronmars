@@ -1,4 +1,4 @@
-import { ApartmentsList } from '../components/Apartment';
+import ApartmentsList from '../components/ApartmentsList';
 import PageContainer from '../components/PageContainer';
 
 const Apartments = () => {

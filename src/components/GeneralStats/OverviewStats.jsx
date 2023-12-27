@@ -2,12 +2,13 @@ import {
 	BuildingOfficeIcon,
 	EnvelopeIcon,
 	UserIcon,
+	PhoneIcon,
 } from '@heroicons/react/24/outline';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { readingsFilterSorter } from '../../utils/readingsUtils';
 
 const OverviewStats = () => {
-	const { state } = useGlobalContext();
+	const state = useGlobalContext().state;
 	const apartmentNo = state.apartment.apartmentNo;
 	const apartmentId = state.apartment._id;
 	const owner = state.apartment.ownerName;
@@ -17,13 +18,13 @@ const OverviewStats = () => {
 	const lastIndex = filteredSortedReadings[0].reading;
 	const consumption =
 		filteredSortedReadings[0].reading - filteredSortedReadings[1].reading;
-	const overDueReadings = filteredSortedReadings.filter(
-		(reading) => reading.paid === false,
-	);
 	const priceCubicMeter = import.meta.env.VITE_PRICE_MC;
 
 	// Calculate total due
 	let totalDue = 0;
+	const overDueReadings = filteredSortedReadings.filter(
+		(reading) => reading.paid === false,
+	);
 
 	overDueReadings.map((reading, index) => {
 		const prevReading =
@@ -37,10 +38,10 @@ const OverviewStats = () => {
 	});
 
 	return (
-		<div className="flex flex-col w-full lg:w-2/5 gap-16 lg:gap-20 items-start">
-			<div className="flex md:justify-start items-start gap-5">
+		<div className="flex flex-col w-full lg:w-2/5 gap-10 lg:gap-16 items-start">
+			<div className="flex flex-row-reverse sm:flex-row md:justify-start items-start gap-5">
 				<BuildingOfficeIcon className="h-11 w-11 stroke-wom-primary fill-wom-primary stroke-1.5" />
-				<div className="leading-8">
+				<div className="leading-10">
 					<h2 className="text-3xl md:text-4xl font-bold whitespace-nowrap mb-8">
 						Apartment {apartmentNo}
 					</h2>
@@ -54,6 +55,9 @@ const OverviewStats = () => {
 					>
 						{userEmail}
 					</a>
+					<br />
+					<PhoneIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
+					{state.apartment.ownerPhoneNo}
 				</div>
 			</div>
 			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-10">

@@ -1,4 +1,4 @@
-import useGlobalContext from '../hooks/useGlobalContext';
+import useGlobalContext from '../../hooks/useGlobalContext';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {

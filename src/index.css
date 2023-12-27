@@ -39,6 +39,10 @@ label {
 	&.btn-outline {
 		@apply bg-transparent border border-gray-700 text-gray-700 hover:bg-transparent hover:border-wom-primary hover:text-wom-primary;
 	}
+
+	&.btn-text {
+		@apply bg-transparent border-0 text-gray-700 px-3 hover:bg-transparent hover:border-wom-primary hover:text-wom-primary;
+	}
 }
 
 .btn:hover {

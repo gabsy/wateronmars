@@ -5,6 +5,7 @@ import {
 	Navigate,
 } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import AdminMenu from './components/AdminMenu';
 import Home from './pages/Home';
 import Apartments from './pages/Apartments';
@@ -15,7 +16,6 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const App = () => {
 	return (
-		// <div className="bg-wom-bgGlobal bg-[url('bg-image3.jpg')] bg-cover min-h-screen pt-10 pb-16 px-5">
 		<div className="bg-wom-bgGlobal bg-cover min-h-screen pt-4 pb-16 px-5">
 			<Router>
 				<SignedIn>
@@ -53,6 +53,9 @@ const App = () => {
 					/>
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
+				<SignedIn>
+					<Footer />
+				</SignedIn>
 			</Router>
 			<SpeedInsights />
 		</div>
