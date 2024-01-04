@@ -1,8 +1,8 @@
 import { useSignIn } from '@clerk/clerk-react';
 import { useState } from 'react';
-import logo from '../assets/logo.svg';
-import logoDark from '../assets/logo-dark.svg';
-import waves from '../assets/waves.svg';
+import logo from '../../assets/logo.svg';
+import logoDark from '../../assets/logo-dark.svg';
+import waves from '../../assets/waves.svg';
 
 const SignIn = () => {
 	const [email, setEmail] = useState('');

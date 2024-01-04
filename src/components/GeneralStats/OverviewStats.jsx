@@ -42,7 +42,7 @@ const OverviewStats = () => {
 			<div className="flex flex-row-reverse sm:flex-row md:justify-start items-start gap-5">
 				<BuildingOfficeIcon className="h-11 w-11 stroke-wom-primary fill-wom-primary stroke-1.5" />
 				<div className="leading-10">
-					<h2 className="text-3xl md:text-4xl font-bold whitespace-nowrap mb-8">
+					<h2 className="text-3xl md:text-4xl font-semibold whitespace-nowrap mb-8">
 						Apartment {apartmentNo}
 					</h2>
 					<UserIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
@@ -60,7 +60,8 @@ const OverviewStats = () => {
 					{state.apartment.ownerPhoneNo}
 				</div>
 			</div>
-			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-10">
+			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-16">
+				{/* Create stand alone component for these items */}
 				<div className="whitespace-nowrap">
 					<p className="text-xs pb-2 sm:pb-3 leading-1 text-slate-400 uppercase">
 						Last reading

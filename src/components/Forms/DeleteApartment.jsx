@@ -14,14 +14,15 @@ const DeleteApartment = ({ apartmentId, onClose }) => {
 		(apartment) => apartment._id === apartmentId,
 	);
 
-	// Delete reading function
+	// Delete apartment function
 	const deleteApartment = async () => {
 		try {
 			await api.post('/deleteApartment', {
 				id: apartmentId,
 			});
-			setIsDeleted(true);
+			// Update readings in global state
 			dispatch({ type: 'DELETE_APARTMENT', payload: apartmentId });
+			setIsDeleted(true);
 			setIsStateUpdated(true);
 		} catch (error) {
 			console.error('Error:', error);
@@ -38,9 +39,9 @@ const DeleteApartment = ({ apartmentId, onClose }) => {
 			) : (
 				<>
 					<p className="text-xl leading-relaxed">
-						Are you sure you want to delete
+						Are you sure you want to delete {''}
 						<b className="text-red-600 mx-1">
-							Apartment {`${apartment.apartmentNo}`}
+							Apartment {`${apartment.apartmentNo}`} {''}
 						</b>
 						?
 					</p>

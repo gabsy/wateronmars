@@ -1,5 +1,5 @@
-import ApartmentsList from '../components/ApartmentsList';
-import PageContainer from '../components/PageContainer';
+import ApartmentsList from '../ApartmentsList';
+import PageContainer from '../PageContainer';
 
 const Apartments = () => {
 	return (

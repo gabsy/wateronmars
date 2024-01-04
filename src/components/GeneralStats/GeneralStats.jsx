@@ -31,7 +31,7 @@ const GeneralStats = () => {
 
 	return (
 		<motion.div
-			className="flex gap-6 px-7 py-8 lg:px-12 lg:py-14 mb-10 lg:mb-16 bg-white rounded-3xl shadow-sm shadow-slate-200"
+			className="flex gap-6 px-7 py-8 lg:px-10 lg:py-12 mb-10 lg:mb-16 bg-white rounded-xl shadow-sm shadow-slate-200"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{

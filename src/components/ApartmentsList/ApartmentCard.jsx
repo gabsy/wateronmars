@@ -54,24 +54,6 @@ const ApartmentCard = ({ apartment }) => {
 				</div>
 			</div>
 			{/* </Link> */}
-			{/* <button
-				onClick={() => openModal('editApartment')}
-				className="text-wom-primary hover:underline font-normal"
-			>
-				Edit Apartment
-			</button>
-			{selectedModal === 'editApartment' && (
-				<Modal
-					content={
-						<EditApartmentForm
-							apartmentId={apartment._id}
-							onClose={closeModal}
-						/>
-					}
-					isOpen={isOpen}
-					onClose={closeModal}
-				/>
-			)} */}
 		</>
 	);
 };
