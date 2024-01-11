@@ -117,7 +117,7 @@ export const GlobalContextProvider = ({ children }) => {
 			// Get signedin user email as ref for apartments filtering.
 			const userEmail = user.emailAddresses[0].emailAddress;
 
-			// Timeout id for loader. Only for demo
+			// Timeout id for loader. Only for demo purposes.
 			let timeoutId;
 
 			// Fetch data from API.

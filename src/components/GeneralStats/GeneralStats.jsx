@@ -1,12 +1,11 @@
-import Chart from '../Chart';
+import Chart from './Chart';
 import OverviewStats from './OverviewStats';
 import { motion } from 'framer-motion';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { readingsFilterSorter } from '../../utils/readingsUtils';
 
-const GeneralStats = () => {
+const GeneralStats = ({ apartmentId }) => {
 	const { state } = useGlobalContext();
-	const apartmentId = state.apartment._id;
 	const readings = state.readings;
 	const filteredSortedReadings = readingsFilterSorter(readings, apartmentId);
 
@@ -38,7 +37,7 @@ const GeneralStats = () => {
 				duration: 0.5,
 			}}
 		>
-			<OverviewStats />
+			<OverviewStats apartmentId={apartmentId} />
 			<Chart data={chartData} />
 		</motion.div>
 	);

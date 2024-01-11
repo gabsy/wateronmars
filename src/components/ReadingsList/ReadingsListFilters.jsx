@@ -1,7 +1,7 @@
 const ReadingsListFilters = () => {
 	return (
 		<div className="buttons flex flex-col gap-6 md:flex-row justify-between md:items-center mb-8 px-2">
-			<h2 className="text-xl md:text-2xl font-semibold">
+			<h2 className="text-xl md:text-xl font-semibold">
 				Consumptions by month
 			</h2>
 			<div className="hidden lg:flex gap-3 pointer-events-none opacity-30">

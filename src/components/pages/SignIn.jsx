@@ -32,8 +32,8 @@ const SignIn = () => {
 	}
 
 	return (
-		<div className="flex w-full items-start mt-5 md:items-center lg:mt-0 h-screen">
-			<div className="lg:w-full flex max-w-screen-xl lg:min-h-[700px] mx-auto bg-white rounded-3xl overflow-hidden shadow-sm">
+		<div className="flex w-full items-start md:mt-5 md:items-center lg:mt-0 h-screen">
+			<div className="lg:w-full flex max-w-screen-xl lg:min-h-[700px] mx-auto bg-white rounded-xl overflow-hidden shadow-sm">
 				<div
 					className="relative flex-1 hidden items-center justify-center bg-gray-900 lg:flex p-16"
 					style={{

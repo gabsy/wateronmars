@@ -6,11 +6,10 @@ import ReadingCardPlaceholder from './ReadingCardPlaceholder';
 import ReadingsListFilters from './ReadingsListFilters';
 import { useMemo } from 'react';
 
-const ReadingsList = () => {
+const ReadingsList = ({ apartmentId }) => {
 	const state = useGlobalContext().state;
-	const { readings, apartment } = state;
+	const { readings } = state;
 	const { userRole } = state;
-	const apartmentId = apartment._id;
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	// Sort readings by readingDate and filter by apartment id

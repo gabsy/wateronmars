@@ -6,13 +6,19 @@ import {
 } from '@heroicons/react/24/outline';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { readingsFilterSorter } from '../../utils/readingsUtils';
+import ApartmentDropdown from './ApartmentDropdown';
 
-const OverviewStats = () => {
-	const state = useGlobalContext().state;
-	const apartmentNo = state.apartment.apartmentNo;
-	const apartmentId = state.apartment._id;
-	const owner = state.apartment.ownerName;
-	const userEmail = state.user.emailAddresses[0].emailAddress;
+const OverviewStats = ({ apartmentId }) => {
+	const { state } = useGlobalContext();
+	const apartment = state.apartments.find(
+		(apartment) => apartment._id === apartmentId,
+	);
+	const apartmentNo = apartment.apartmentNo;
+	const owner = apartment.ownerName;
+	const userEmail = apartmentId
+		? apartment.ownerEmail
+		: state.user.emailAddresses[0].emailAddress;
+	const ownerPhoneNo = apartment.ownerPhoneNo;
 	const readings = state.readings;
 	const filteredSortedReadings = readingsFilterSorter(readings, apartmentId);
 	const lastIndex = filteredSortedReadings[0].reading;
@@ -39,26 +45,27 @@ const OverviewStats = () => {
 
 	return (
 		<div className="flex flex-col w-full lg:w-2/5 gap-10 lg:gap-16 items-start">
-			<div className="flex flex-row-reverse sm:flex-row md:justify-start items-start gap-5">
-				<BuildingOfficeIcon className="h-11 w-11 stroke-wom-primary fill-wom-primary stroke-1.5" />
+			<div className="flex flex-row sm:flex-row md:justify-start items-start gap-5 w-full">
 				<div className="leading-10">
-					<h2 className="text-3xl md:text-4xl font-semibold whitespace-nowrap mb-8">
+					<h2 className="text-3xl md:text-4xl font-semibold whitespace-nowrap mb-8 flex">
 						Apartment {apartmentNo}
+						<ApartmentDropdown />
 					</h2>
 					<UserIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
 					{owner}
 					<br />
 					<EnvelopeIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
 					<a
-						className="lowercase text-wom-primary hover:underline"
+						className="lowercase text-wom-primary hover:underline break-all"
 						href={`mailto:${userEmail}`}
 					>
 						{userEmail}
 					</a>
 					<br />
 					<PhoneIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
-					{state.apartment.ownerPhoneNo}
+					{ownerPhoneNo}
 				</div>
+				<BuildingOfficeIcon className="h-11 w-11 hidden md:block stroke-wom-primary fill-wom-primary stroke-1.5" />
 			</div>
 			<div className="flex flex-wrap lg:flex-nowrap justify-between w-full lg:w-auto gap-4 lg:gap-16">
 				{/* Create stand alone component for these items */}
