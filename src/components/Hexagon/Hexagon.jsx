@@ -1,9 +1,9 @@
 import './Hexagon.css';
 
-const Hexagon = ({ children, ...props }) => {
+const Hexagon = ({ children, customClasses }) => {
 	return (
-		<div className={`hexagon ${props.customClasses}`}>
-			<div className="absolute z-50 h-full w-full flex flex-col items-center justify-center">
+		<div className={`hexagon ${customClasses}`}>
+			<div className="absolute h-full w-full flex flex-col items-center justify-center">
 				{children}
 			</div>
 		</div>

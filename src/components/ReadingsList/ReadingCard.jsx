@@ -31,7 +31,7 @@ const ReadingCard = ({
 
 	return (
 		<>
-			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-lg hover:shadow-sm hover:shadow-slate-200 transition-all duration-300 relative">
+			<div className="flex flex-col bg-white gap-6 lg:gap-8 p-7 rounded-lg hover:shadow-md hover:shadow-slate-200 hover:scale-105 transition-all duration-300 relative">
 				{userRole === 'admin' && (
 					<div className="flex justify-end items-center absolute bottom-6 left-7 gap-3">
 						<CardActions

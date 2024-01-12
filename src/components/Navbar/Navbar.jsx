@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { MapPinIcon } from '@heroicons/react/24/outline';
-import {
-	ArrowRightOnRectangleIcon,
-	Bars3BottomRightIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
+import MenuDropdown from './MenuDropdown';
 
 const Navbar = () => {
 	const { user, isSignedIn } = useUser();
@@ -18,14 +16,14 @@ const Navbar = () => {
 
 	return (
 		<motion.div
-			className="max-w-screen-2xl mx-auto mb-8"
+			className="max-w-screen-2xl mx-auto mb-6 lg:mb-8"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{
 				duration: 0.5,
 			}}
 		>
-			<nav className="flex justify-between items-center pt-6 px-2 pb-4">
+			<nav className="flex justify-between items-center md:pt-6 px-2 md:pb-4">
 				<div className="logo flex-1">
 					<Link to="/">
 						<img src={logo} alt="WaterOnMars" className="w-44" />
@@ -62,12 +60,7 @@ const Navbar = () => {
 								</button>
 							</li>
 						</ul>
-						<button
-							className="bg-transparent cursor-pointer hover:text-wom-primary ml-6"
-							title="Menu"
-						>
-							<Bars3BottomRightIcon className="h-7 w-7 inline-block align-middle lg:hidden stroke-wom-primary" />
-						</button>
+						<MenuDropdown />
 					</>
 				)}
 			</nav>

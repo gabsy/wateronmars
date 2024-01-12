@@ -22,7 +22,7 @@ const App = () => {
 					<SignedIn>
 						<Navbar />
 						<ProtectedRoute allowedRoles={['admin']}>
-							<AdminMenu />
+							<AdminMenu classNames="hidden lg:flex" />
 						</ProtectedRoute>
 					</SignedIn>
 					<Routes>

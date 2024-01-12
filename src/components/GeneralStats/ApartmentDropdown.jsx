@@ -35,8 +35,10 @@ const ApartmentDropdown = () => {
 			}
 		};
 
+		// Add document event listener on mount
 		document.addEventListener('mousedown', handleClickOutside);
 
+		// Cleanup event listener on unmount
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
@@ -47,15 +49,19 @@ const ApartmentDropdown = () => {
 		hidden: {
 			opacity: 0,
 			x: 10,
+			zIndex: -10,
+			pointerEvents: 'none',
 		},
 		visible: {
 			opacity: 1,
 			x: 0,
+			zIndex: 10,
+			pointerEvents: 'auto',
 		},
 	};
 
 	return (
-		<div className="relative ml-8" ref={dropdownRef}>
+		<div className="relative ml-4" ref={dropdownRef}>
 			<button
 				className="bg-transparent block relative"
 				onClick={handleDropdownShow}
@@ -67,7 +73,7 @@ const ApartmentDropdown = () => {
 				/>
 			</button>
 			<motion.div
-				className="absolute top-full shadow-2xl bg-black right-0 w-auto z-10 flex rounded-md flex-col text-base"
+				className="absolute top-full shadow-2xl bg-black right-0 w-auto flex rounded-md flex-col text-base"
 				variants={dropdownVariants}
 				initial="hidden"
 				animate={isDropdownOpen ? 'visible' : 'hidden'}

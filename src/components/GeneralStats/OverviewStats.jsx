@@ -10,6 +10,7 @@ import ApartmentDropdown from './ApartmentDropdown';
 
 const OverviewStats = ({ apartmentId }) => {
 	const { state } = useGlobalContext();
+	const userRole = state.userRole;
 	const apartment = state.apartments.find(
 		(apartment) => apartment._id === apartmentId,
 	);
@@ -22,7 +23,7 @@ const OverviewStats = ({ apartmentId }) => {
 	const readings = state.readings;
 	const filteredSortedReadings = readingsFilterSorter(readings, apartmentId);
 	const lastIndex = filteredSortedReadings[0].reading;
-	const consumption =
+	const lastConsumption =
 		filteredSortedReadings[0].reading - filteredSortedReadings[1].reading;
 	const priceCubicMeter = import.meta.env.VITE_PRICE_MC;
 
@@ -49,7 +50,7 @@ const OverviewStats = ({ apartmentId }) => {
 				<div className="leading-10">
 					<h2 className="text-3xl md:text-4xl font-semibold whitespace-nowrap mb-8 flex">
 						Apartment {apartmentNo}
-						<ApartmentDropdown />
+						{userRole === 'admin' && <ApartmentDropdown />}
 					</h2>
 					<UserIcon className="h-5 w-5 inline-block mr-3 stroke-wom-primary" />
 					{owner}
@@ -82,7 +83,7 @@ const OverviewStats = ({ apartmentId }) => {
 						Last consumption
 					</p>
 					<h3 className="text-3xl lg:text-3xl whitespace-nowrap font-semibold">
-						{consumption}
+						{lastConsumption}
 						<span className="text-base font-normal"> mc</span>
 					</h3>
 				</div>

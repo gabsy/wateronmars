@@ -7,6 +7,7 @@
 	background: #617aff;
 	transition: opacity 0.5s;
 	flex-shrink: 0;
+	z-index: 2;
 
 	&:before,
 	&:after {
@@ -16,6 +17,7 @@
 		border-radius: inherit;
 		background: inherit;
 		content: '';
+		z-index: -1;
 	}
 
 	&:before {
