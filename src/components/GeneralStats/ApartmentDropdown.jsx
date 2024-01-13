@@ -44,7 +44,7 @@ const ApartmentDropdown = () => {
 		};
 	}, []);
 
-	// Set motion animation variants to show from opacity 0 to 1 and from y -10 to 0
+	// Set motion animation variants to show from opacity 0 to 1 and from x -10 to 0
 	const dropdownVariants = {
 		hidden: {
 			opacity: 0,

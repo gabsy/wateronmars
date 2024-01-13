@@ -6,7 +6,7 @@ import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useClerk, useUser } from '@clerk/clerk-react';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { motion } from 'framer-motion';
-import MenuDropdown from './MenuDropdown';
+import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
 	const { user, isSignedIn } = useUser();
@@ -60,7 +60,11 @@ const Navbar = () => {
 								</button>
 							</li>
 						</ul>
-						<MenuDropdown />
+						<MobileMenu
+							signout={signOut}
+							user={user}
+							userRole={userRole}
+						/>
 					</>
 				)}
 			</nav>
