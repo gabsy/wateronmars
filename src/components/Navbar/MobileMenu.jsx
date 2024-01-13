@@ -61,20 +61,16 @@ const MobileMenu = ({ user, userRole, signOut }) => {
 				className="bg-transparent block relative z-20 lg:hidden"
 				onClick={handleDropdownShow}
 			>
-				<Bars3BottomRightIcon className="h-7 w-7 inline-block align-middle lg:hidden " />
+				<Bars3BottomRightIcon className="h-7 w-7 inline-block align-middle lg:hidden stroke-wom-primary" />
 			</button>
 			<motion.div
-				className="fixed shadow-2xl bg-white w-auto z-10 pr-6 pl-10 pb-12 pt-16 md:pt-28 top-0 right-0 text-base lg:hidden"
+				className="fixed shadow-2xl bg-white w-auto z-10 pr-6 pl-10 pb-10 rounded-bl-lg pt-20 md:pt-24 top-0 right-0 text-base lg:hidden"
 				variants={dropdownVariants}
 				initial="hidden"
 				animate={isDropdownOpen ? 'visible' : 'hidden'}
 				transition={{ ease: 'backInOut', duration: 0.3 }}
 			>
 				<ul className="flex flex-col flex-1 items-end gap-4">
-					<li>
-						<span>{user.fullName}</span>
-						<UserIcon className="h-5 w-5 inline-block align-top ml-2 fill-wom-primary" />
-					</li>
 					<li>
 						<span className="align-middle text-[10px] text-white bg-orange-500 rounded-sm uppercase ml-2 px-1 py-0.25">
 							ap. 3
@@ -85,6 +81,11 @@ const MobileMenu = ({ user, userRole, signOut }) => {
 							</span>
 						)}
 					</li>
+					<li>
+						<span>{user.fullName}</span>
+						<UserIcon className="h-5 w-5 inline-block align-top ml-2 fill-wom-primary" />
+					</li>
+
 					<li>
 						<button
 							className="bg-transparent cursor-pointer hover:text-wom-primary"
@@ -97,7 +98,8 @@ const MobileMenu = ({ user, userRole, signOut }) => {
 					</li>
 					{userRole === 'admin' && (
 						<>
-							<li className="block">
+							{/* Separator */}
+							<li className="block w-full">
 								<div className="h-[1px] bg-gray-200 my-3"></div>
 							</li>
 							<li>

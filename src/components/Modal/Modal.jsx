@@ -3,6 +3,8 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
 const Modal = ({ content, isOpen, onClose }) => {
+	const screenSize = window.innerWidth > 768;
+
 	return (
 		<>
 			{isOpen && (
@@ -17,7 +19,7 @@ const Modal = ({ content, isOpen, onClose }) => {
 							opacity: 0,
 							scale: 0.94,
 							translateX: '-50%',
-							translateY: '-50%',
+							translateY: screenSize ? '-50%' : '0',
 						}}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{

@@ -3,12 +3,14 @@ import { useState } from 'react';
 import logo from '../../assets/logo.svg';
 import logoDark from '../../assets/logo-dark.svg';
 import waves from '../../assets/waves.svg';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
 
 const SignIn = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const { isLoaded, signIn, setActive } = useSignIn();
+	const [error, setError] = useState('');
 
 	if (!isLoaded) {
 		return null;
@@ -28,7 +30,10 @@ const SignIn = () => {
 					console.log(result);
 				}
 			})
-			.catch((err) => console.error('error', err.errors[0].longMessage));
+			.catch((err) => {
+				console.error('error', err.errors[0].longMessage);
+				setError(err.errors[0].longMessage);
+			});
 	}
 
 	return (
@@ -83,6 +88,12 @@ const SignIn = () => {
 								consumptions.
 							</p>
 						</div>
+						{error && (
+							<div className="text-red-600 mb-8">
+								<ExclamationTriangleIcon className="h-5 w-5 inline-block mr-2" />
+								{error}
+							</div>
+						)}
 						<form onSubmit={submit} className="space-y-8">
 							<div>
 								<label>Email</label>

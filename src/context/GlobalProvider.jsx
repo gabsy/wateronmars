@@ -150,7 +150,7 @@ export const GlobalContextProvider = ({ children }) => {
 				} finally {
 					timeoutId = setTimeout(() => {
 						setIsLoading(false);
-					}, 800);
+					}, 500);
 				}
 			};
 
