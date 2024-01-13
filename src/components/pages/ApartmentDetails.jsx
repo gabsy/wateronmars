@@ -28,7 +28,7 @@ const ApartmentDetails = () => {
 	return (
 		<PageContainer>
 			<GeneralStats apartmentId={apartmentId} />
-			<ReadingsList apartmentId={apartmentId} />
+			{/* <ReadingsList apartmentId={apartmentId} /> */}
 		</PageContainer>
 	);
 };
