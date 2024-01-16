@@ -1,6 +1,16 @@
 # Wateronmars
+Wateronmars is a personal project built with React, designed for managing water consumption per apartment in a small condominium. The application provides a user-friendly interface to display water consumption readings by month for selected apartments.
+It is using authentication implemented with [Clerk](https://clerk.com), allowing only admin users to perform write actions such as adding apartments, adding readings, updating, or deleting records. Regular users can only see, by default, their apartment data.
 
-Wateronmars is a personal project built with React, designed for managing water consumption per apartment in a small condominium. The application provides a user-friendly interface to display water consumption readings by month for selected apartments. The system is designed to be secure, with authentication implemented using Clerk, allowing only admin users to perform write actions such as adding apartments, adding readings, updating, or deleting records.
+
+<img width="1593" alt="CleanShot 2024-01-16 at 15 35 26@2x" src="https://github.com/gabsy/wateronmars/assets/871700/304e9146-18bd-49a8-86f4-3f46ccb4de59">
+
+
+
+## Demo
+
+[Demo Version](https://demo.marte30.online/)
+
 
 ## Key Features
 
@@ -16,16 +26,11 @@ Wateronmars is a personal project built with React, designed for managing water 
 
 - **User Roles:**
   - Admin: Can perform read and write actions.
-  - Regular Users: Can view water consumption readings but cannot perform any write actions.
+  - Regular Users: Can view water consumption readings of their apartment but cannot perform any write actions.
 
 - **Apartment Management:**
-  - Admin can add new apartments.
-  - Admin can update apartment details.
+  - Admin can addm update or delete apartments.
 
 - **Water Consumption:**
   - Each apartment has its water consumption readings listed by month.
   - Readings can be added, updated, or deleted by the admin.
-
-## Demo
-
-[Demo Version](https://demo.marte30.online/)
