@@ -3,7 +3,7 @@ Wateronmars is a personal project built with React, designed for managing water 
 It is using authentication implemented with [Clerk](https://clerk.com), allowing only admin users to perform write actions such as adding apartments, adding readings, updating, or deleting records. Regular users can only see, by default, their apartment data.
 
 
-<img width="1593" alt="CleanShot 2024-01-16 at 15 35 26@2x" src="https://github.com/gabsy/wateronmars/assets/871700/304e9146-18bd-49a8-86f4-3f46ccb4de59">
+<img width="1589" alt="CleanShot 2024-01-16 at 15 36 20@2x" src="https://github.com/gabsy/wateronmars/assets/871700/0615241e-f6ee-4198-9d47-65a432fcd4a1">
 
 
 
