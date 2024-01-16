@@ -9,6 +9,8 @@ Short project description goes here.
 - ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 - ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 
+  [![Tech Stack](https://skillicons.dev/icons?i=reactjs,mongodb,clark&theme=light)](https://skillicons.dev)
+
 ## Demo
 
 [Demo Version](#) <!-- Add your demo link here -->
