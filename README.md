@@ -4,16 +4,11 @@ Short project description goes here.
 
 ## Tech Stack
 
-- ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-- ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-- ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-- ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-
-  [![Tech Stack](https://skillicons.dev/icons?i=reactjs,mongodb,clark&theme=light)](https://skillicons.dev)
+  [![Tech Stack](https://skillicons.dev/icons?i=react,mongodb,vite&theme=light)](https://skillicons.dev)
 
 ## Demo
 
-[Demo Version](#) <!-- Add your demo link here -->
+[Demo Version](#) [https://demo.marte30.online/]
 
 ## Installation
 
