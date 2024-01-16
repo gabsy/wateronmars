@@ -4,11 +4,13 @@ Short project description goes here.
 
 ## Tech Stack
 
-  [![Tech Stack](https://skillicons.dev/icons?i=react,mongodb,vite&theme=light)](https://skillicons.dev)
+  [![Tech Stack](https://skillicons.dev/icons?i=vite,react,mongodb,axios&theme=light)](https://skillicons.dev)
+
+  Authetification with Clerk ![image](https://github.com/gabsy/wateronmars/assets/871700/1e2e0951-19ea-46f8-9619-cfdb87fe7d37)
 
 ## Demo
 
-[Demo Version](#) [https://demo.marte30.online/]
+[Demo Version](https://demo.marte30.online/)
 
 ## Installation
 
