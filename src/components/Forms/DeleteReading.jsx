@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import useGlobalContext from '../../hooks/useGlobalContext';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import { ModalSuccess } from '../Modal';
 
 const DeleteReading = ({ readingId, onClose }) => {
-	const { state, dispatch } = useGlobalContext();
+	// const { state, dispatch } = useGlobalContext();
+	const { state } = useGlobalContext();
 	const { readings } = state;
 	const [isDeleted, setIsDeleted] = useState(false);
 	const [isStateUpdated, setIsStateUpdated] = useState(false);
@@ -14,17 +15,19 @@ const DeleteReading = ({ readingId, onClose }) => {
 
 	// Delete reading function
 	const deleteReading = async () => {
-		try {
-			await api.post('/deleteReading', {
-				id: readingId,
-			});
-			setIsDeleted(true);
-			// Update readings in global state
-			dispatch({ type: 'DELETE_READING', payload: readingId });
-			setIsStateUpdated(true);
-		} catch (error) {
-			console.error('Error:', error);
-		}
+		// try {
+		// 	await api.post('/deleteReading', {
+		// 		id: readingId,
+		// 	});
+		// 	setIsDeleted(true);
+		// 	// Update readings in global state
+		// 	dispatch({ type: 'DELETE_READING', payload: readingId });
+		// 	setIsStateUpdated(true);
+		// } catch (error) {
+		// 	console.error('Error:', error);
+		// }
+		setIsDeleted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -41,15 +44,18 @@ const DeleteReading = ({ readingId, onClose }) => {
 						<b className="text-red-600 mx-1">{`${reading.month} ${reading.year}`}</b>
 						{''}?
 					</p>
+					<p className="text-wom-green text-sm mt-2">
+						* As this is demo version, no action will be submitted.
+					</p>
 					<div className="flex justify-center gap-4 mt-8">
+						<button className="btn btn-text" onClick={onClose}>
+							Cancel
+						</button>
 						<button
 							className="btn btn-primary"
 							onClick={deleteReading}
 						>
 							Delete
-						</button>
-						<button className="btn btn-text" onClick={onClose}>
-							Cancel
 						</button>
 					</div>
 				</>

@@ -1,13 +1,13 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import * as yup from 'yup';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import FormButtons from './FormButtons';
 import { ModalSuccess } from '../Modal';
 
 const EditApartmentForm = ({ apartmentId, onClose }) => {
-	const { dispatch, state } = useGlobalContext();
+	const { state } = useGlobalContext();
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
@@ -24,37 +24,39 @@ const EditApartmentForm = ({ apartmentId, onClose }) => {
 		ownerPhoneNo: yup.number().required('Owner phone number is required'),
 	});
 
-	const handleSubmit = async (values) => {
-		const apartmentNo = values.apartmentNo;
-		const ownerEmail = values.ownerEmail;
-		const ownerName = values.ownerName;
-		const ownerPhoneNo = values.ownerPhoneNo;
+	const handleSubmit = async () => {
+		// const apartmentNo = values.apartmentNo;
+		// const ownerEmail = values.ownerEmail;
+		// const ownerName = values.ownerName;
+		// const ownerPhoneNo = values.ownerPhoneNo;
 
-		const apartmentData = {
-			_id: apartmentId,
-			apartmentNo,
-			ownerEmail,
-			ownerName,
-			ownerPhoneNo,
-		};
+		// const apartmentData = {
+		// 	_id: apartmentId,
+		// 	apartmentNo,
+		// 	ownerEmail,
+		// 	ownerName,
+		// 	ownerPhoneNo,
+		// };
 
-		// API call to update apartment
-		const updateApartmentInBackend = async () => {
-			try {
-				await api.put('/updateApartment', apartmentData);
+		// // API call to update apartment
+		// const updateApartmentInBackend = async () => {
+		// 	try {
+		// 		await api.put('/updateApartment', apartmentData);
 
-				setIsSubmitted(true);
-				// Update apartments in global state
-				dispatch({
-					type: 'UPDATE_APARTMENT',
-					payload: apartmentData,
-				});
-				setIsStateUpdated(true);
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		};
-		updateApartmentInBackend();
+		// 		setIsSubmitted(true);
+		// 		// Update apartments in global state
+		// 		dispatch({
+		// 			type: 'UPDATE_APARTMENT',
+		// 			payload: apartmentData,
+		// 		});
+		// 		setIsStateUpdated(true);
+		// 	} catch (error) {
+		// 		console.error('Error:', error);
+		// 	}
+		// };
+		// updateApartmentInBackend();
+		setIsSubmitted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -138,6 +140,10 @@ const EditApartmentForm = ({ apartmentId, onClose }) => {
 										</div>
 									) : null}
 								</div>
+								<p className="text-wom-green text-sm mt-2">
+									* As this is demo version, no data will be
+									submitted.
+								</p>
 								<FormButtons onClose={onClose} />
 							</Form>
 						)}

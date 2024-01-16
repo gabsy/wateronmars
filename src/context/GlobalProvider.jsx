@@ -2,7 +2,6 @@
 import { createContext, useState, useEffect, useReducer } from 'react';
 import { useUser, useSession } from '@clerk/clerk-react';
 import api from '../api/defaults';
-// import { checkUserRole } from '../utils/userUtils';
 import LoaderAtoms from '../components/LoaderAtoms';
 
 // Create context
@@ -111,7 +110,6 @@ export const GlobalContextProvider = ({ children }) => {
 
 			// Set user role.
 			const userRole = user.publicMetadata.userRole;
-			// const userRole = checkUserRole(session);
 			dispatch({ type: 'SET_USER_ROLE', payload: userRole });
 
 			// Get signedin user email as ref for apartments filtering.

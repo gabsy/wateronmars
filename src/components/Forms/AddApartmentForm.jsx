@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import * as yup from 'yup';
-import useGlobalContext from '../../hooks/useGlobalContext';
+// import useGlobalContext from '../../hooks/useGlobalContext';
 import FormButtons from './FormButtons';
 import { ModalSuccess } from '../Modal';
 
 const AddApartmentForm = ({ onClose }) => {
-	const { dispatch } = useGlobalContext();
+	// const { dispatch } = useGlobalContext();
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
@@ -20,37 +20,39 @@ const AddApartmentForm = ({ onClose }) => {
 	});
 
 	// Handle Submit function
-	const handleSubmit = async (values) => {
-		const apartmentNo = values.apartmentNo;
-		const ownerEmail = values.ownerEmail;
-		const ownerName = values.ownerName;
-		const ownerPhoneNo = values.ownerPhoneNo;
+	const handleSubmit = async () => {
+		// const apartmentNo = values.apartmentNo;
+		// const ownerEmail = values.ownerEmail;
+		// const ownerName = values.ownerName;
+		// const ownerPhoneNo = values.ownerPhoneNo;
 
-		const apartmentData = {
-			apartmentNo,
-			ownerEmail,
-			ownerName,
-			ownerPhoneNo,
-		};
+		// const apartmentData = {
+		// 	apartmentNo,
+		// 	ownerEmail,
+		// 	ownerName,
+		// 	ownerPhoneNo,
+		// };
 
-		// API call to insert new reading
-		const addApartment = async () => {
-			try {
-				const response = await api.post('/addApartment', apartmentData);
-				setIsSubmitted(true);
-				dispatch({
-					type: 'UPDATE_APARTMENTS',
-					payload: {
-						_id: response.data.insertedId,
-						...apartmentData,
-					},
-				});
-				setIsStateUpdated(true);
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		};
-		addApartment();
+		// // API call to insert new reading
+		// const addApartment = async () => {
+		// 	try {
+		// 		const response = await api.post('/addApartment', apartmentData);
+		// 		setIsSubmitted(true);
+		// 		dispatch({
+		// 			type: 'UPDATE_APARTMENTS',
+		// 			payload: {
+		// 				_id: response.data.insertedId,
+		// 				...apartmentData,
+		// 			},
+		// 		});
+		// 		setIsStateUpdated(true);
+		// 	} catch (error) {
+		// 		console.error('Error:', error);
+		// 	}
+		// };
+		// addApartment();
+		setIsSubmitted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -134,6 +136,10 @@ const AddApartmentForm = ({ onClose }) => {
 										</div>
 									) : null}
 								</div>
+								<p className="text-wom-green text-sm mt-2">
+									* As this is demo version, no data will be
+									submitted.
+								</p>
 								<FormButtons onClose={onClose} />
 							</Form>
 						)}

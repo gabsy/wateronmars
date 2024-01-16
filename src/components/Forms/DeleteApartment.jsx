@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import useGlobalContext from '../../hooks/useGlobalContext';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import { ModalSuccess } from '../Modal';
 
 const DeleteApartment = ({ apartmentId, onClose }) => {
-	const { state, dispatch } = useGlobalContext();
+	// const { state, dispatch } = useGlobalContext();
+	const { state } = useGlobalContext();
 	const { apartments } = state;
 	const [isDeleted, setIsDeleted] = useState(false);
 	const [isStateUpdated, setIsStateUpdated] = useState(false);
@@ -16,17 +17,19 @@ const DeleteApartment = ({ apartmentId, onClose }) => {
 
 	// Delete apartment function
 	const deleteApartment = async () => {
-		try {
-			await api.post('/deleteApartment', {
-				id: apartmentId,
-			});
-			// Update readings in global state
-			dispatch({ type: 'DELETE_APARTMENT', payload: apartmentId });
-			setIsDeleted(true);
-			setIsStateUpdated(true);
-		} catch (error) {
-			console.error('Error:', error);
-		}
+		// try {
+		// 	await api.post('/deleteApartment', {
+		// 		id: apartmentId,
+		// 	});
+		// 	// Update readings in global state
+		// 	dispatch({ type: 'DELETE_APARTMENT', payload: apartmentId });
+		// 	setIsDeleted(true);
+		// 	setIsStateUpdated(true);
+		// } catch (error) {
+		// 	console.error('Error:', error);
+		// }
+		setIsDeleted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -45,15 +48,18 @@ const DeleteApartment = ({ apartmentId, onClose }) => {
 						</b>
 						?
 					</p>
+					<p className="text-wom-green text-sm mt-2">
+						* As this is demo version, no action will be submitted.
+					</p>
 					<div className="flex justify-center gap-4 mt-8">
+						<button className="btn btn-text" onClick={onClose}>
+							Cancel
+						</button>
 						<button
 							className="btn btn-primary"
 							onClick={deleteApartment}
 						>
 							Delete
-						</button>
-						<button className="btn btn-text" onClick={onClose}>
-							Cancel
 						</button>
 					</div>
 				</>

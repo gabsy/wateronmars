@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import useGlobalContext from '../../hooks/useGlobalContext';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import * as yup from 'yup';
 import FormButtons from './FormButtons';
 import { ModalSuccess } from '../Modal';
 
 const AddReadingForm = ({ onClose }) => {
-	const { dispatch } = useGlobalContext();
+	// const { dispatch } = useGlobalContext();
 	const apartments = useGlobalContext().state.apartments;
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isStateUpdated, setIsStateUpdated] = useState(false);
@@ -31,41 +31,43 @@ const AddReadingForm = ({ onClose }) => {
 	).toLocaleString('default', { month: 'short' });
 
 	// Handle Submit function
-	const handleSubmit = async (values) => {
-		const apartmentId = values.apartmentId;
-		const month = values.month;
-		const year = values.year;
-		const reading = values.reading;
-		const readingDate = values.readingDate;
-		const paid = values.paid;
+	const handleSubmit = async () => {
+		// const apartmentId = values.apartmentId;
+		// const month = values.month;
+		// const year = values.year;
+		// const reading = values.reading;
+		// const readingDate = values.readingDate;
+		// const paid = values.paid;
 
-		const readingData = {
-			apartmentId,
-			month,
-			year,
-			reading,
-			readingDate,
-			paid,
-		};
+		// const readingData = {
+		// 	apartmentId,
+		// 	month,
+		// 	year,
+		// 	reading,
+		// 	readingDate,
+		// 	paid,
+		// };
 
 		// API call to insert new reading
-		const addReading = async () => {
-			try {
-				const response = await api.post('/addReading', readingData);
-				setIsSubmitted(true);
-				dispatch({
-					type: 'UPDATE_READINGS',
-					payload: {
-						_id: response.data.insertedId,
-						...readingData,
-					},
-				});
-				setIsStateUpdated(true);
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		};
-		addReading();
+		// const addReading = async () => {
+		// 	try {
+		// 		const response = await api.post('/addReading', readingData);
+		// 		setIsSubmitted(true);
+		// 		dispatch({
+		// 			type: 'UPDATE_READINGS',
+		// 			payload: {
+		// 				_id: response.data.insertedId,
+		// 				...readingData,
+		// 			},
+		// 		});
+		// 		setIsStateUpdated(true);
+		// 	} catch (error) {
+		// 		console.error('Error:', error);
+		// 	}
+		// };
+		// addReading();
+		setIsSubmitted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -144,7 +146,6 @@ const AddReadingForm = ({ onClose }) => {
 										</div>
 									) : null}
 								</div>
-
 								<div>
 									<label htmlFor="year">Year</label>
 									<Field id="year" name="year" type="text" />
@@ -154,7 +155,6 @@ const AddReadingForm = ({ onClose }) => {
 										</div>
 									) : null}
 								</div>
-
 								<div>
 									<label htmlFor="reading">Index</label>
 									<Field
@@ -168,7 +168,6 @@ const AddReadingForm = ({ onClose }) => {
 										</div>
 									) : null}
 								</div>
-
 								<div>
 									<Field
 										id="paid"
@@ -183,7 +182,6 @@ const AddReadingForm = ({ onClose }) => {
 										Paid
 									</label>
 								</div>
-
 								<div>
 									<label htmlFor="readingDate">
 										Reading Date
@@ -200,7 +198,10 @@ const AddReadingForm = ({ onClose }) => {
 										</div>
 									) : null}
 								</div>
-
+								<p className="text-wom-green text-sm mt-2">
+									* As this is demo version, no data will be
+									submitted.
+								</p>
 								<FormButtons onClose={onClose} />
 							</Form>
 						)}

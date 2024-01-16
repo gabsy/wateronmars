@@ -24,7 +24,7 @@ const ApartmentCard = ({ apartment }) => {
 
 	return (
 		<>
-			<div className="relative flex flex-col sm:flex-row gap-0 md:gap-2 p-6 py-8 rounded-lg bg-white hover:shadow-md hover:shadow-slate-200 hover:scale-105 transition-all duration-300">
+			<div className="relative flex flex-col sm:flex-row gap-0 md:gap-2 p-6 py-8 rounded-lg bg-white hover:shadow-md hover:shadow-slate-200 transition-all duration-300 hover:border-wom-primary border border-transparent">
 				{userRole === 'admin' && (
 					<div className="flex justify-end items-center absolute top-8 right-7 gap-3">
 						<CardActions

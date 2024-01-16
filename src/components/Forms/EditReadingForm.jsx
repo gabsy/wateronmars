@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import useGlobalContext from '../../hooks/useGlobalContext';
-import api from '../../api/defaults';
+// import api from '../../api/defaults';
 import * as yup from 'yup';
 import FormButtons from './FormButtons';
 import { ModalSuccess } from '../Modal';
 
 const EditReadingForm = ({ readingId, onClose }) => {
-	const { dispatch, state } = useGlobalContext();
+	const { state } = useGlobalContext();
 	const { readings, apartments } = state;
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [isStateUpdated, setisStateUpdated] = useState(false);
+	const [isStateUpdated, setIsStateUpdated] = useState(false);
 
 	// Validation Schema
 	const validationSchema = yup.object().shape({
@@ -29,37 +29,39 @@ const EditReadingForm = ({ readingId, onClose }) => {
 	const reading = readings.find((reading) => reading._id === readingId);
 
 	// Handle Submit function
-	const handleSubmit = async (values) => {
-		const apartmentId = values.apartmentId;
-		const month = values.month;
-		const year = values.year;
-		const reading = values.reading;
-		const readingDate = values.readingDate;
-		const paid = values.paid;
+	const handleSubmit = async () => {
+		// const apartmentId = values.apartmentId;
+		// const month = values.month;
+		// const year = values.year;
+		// const reading = values.reading;
+		// const readingDate = values.readingDate;
+		// const paid = values.paid;
 
-		const readingData = {
-			_id: readingId,
-			apartmentId,
-			month,
-			year,
-			reading,
-			readingDate,
-			paid,
-		};
+		// const readingData = {
+		// 	_id: readingId,
+		// 	apartmentId,
+		// 	month,
+		// 	year,
+		// 	reading,
+		// 	readingDate,
+		// 	paid,
+		// };
 
-		// API call to update reading
-		const updateReadingInBackend = async () => {
-			try {
-				await api.put('/updateReading', readingData);
-				setIsSubmitted(true);
-				// Update readings in global state
-				dispatch({ type: 'UPDATE_READING', payload: readingData });
-				setisStateUpdated(true);
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		};
-		updateReadingInBackend();
+		// // API call to update reading
+		// const updateReadingInBackend = async () => {
+		// 	try {
+		// 		await api.put('/updateReading', readingData);
+		// 		setIsSubmitted(true);
+		// 		// Update readings in global state
+		// 		dispatch({ type: 'UPDATE_READING', payload: readingData });
+		// 		setisStateUpdated(true);
+		// 	} catch (error) {
+		// 		console.error('Error:', error);
+		// 	}
+		// };
+		// updateReadingInBackend();
+		setIsSubmitted(true);
+		setIsStateUpdated(true);
 	};
 
 	return (
@@ -190,7 +192,10 @@ const EditReadingForm = ({ readingId, onClose }) => {
 										</div>
 									) : null}
 								</div>
-
+								<p className="text-wom-green text-sm mt-2">
+									* As this is demo version, no data will be
+									submitted.
+								</p>
 								<FormButtons onClose={onClose} />
 							</Form>
 						)}
