@@ -6,8 +6,8 @@ import waves from '../../assets/waves.svg';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid';
 
 const SignIn = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('demo@wom.com');
+	const [password, setPassword] = useState('demo');
 
 	const { isLoaded, signIn, setActive } = useSignIn();
 	const [error, setError] = useState('');
@@ -80,6 +80,9 @@ const SignIn = () => {
 					<div className="w-full max-w-md  bg-white text-gray-600">
 						<img src={logo} className="lg:hidden mb-10" />
 						<div className="space-y-3 mb-8">
+							<span className="text-sm uppercase text-wom-primary">
+								DEMO VERSION
+							</span>
 							<h2 className="text-gray-800 text-2xl font-bold sm:text-4xl mt-0">
 								Welcome back!
 							</h2>
@@ -101,6 +104,7 @@ const SignIn = () => {
 									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
+									disabled
 								/>
 							</div>
 							<div>
@@ -111,6 +115,7 @@ const SignIn = () => {
 									onChange={(e) =>
 										setPassword(e.target.value)
 									}
+									disabled
 								/>
 								<a
 									href="#"
