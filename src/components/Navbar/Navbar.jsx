@@ -24,9 +24,12 @@ const Navbar = () => {
 			}}
 		>
 			<nav className="flex justify-between items-center md:pt-6 px-2 md:pb-4">
-				<div className="logo flex-1">
+				<div className="logo flex-1 relative">
 					<Link to="/">
 						<img src={logo} alt="WaterOnMars" className="w-44" />
+						<span className="text-xs text-gray-500 pl-12 top-8 absolute">
+							DEMO VERSION
+						</span>
 					</Link>
 				</div>
 				{isSignedIn && (
