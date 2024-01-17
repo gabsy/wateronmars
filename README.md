@@ -15,7 +15,7 @@ It is using authentication implemented with [Clerk](https://clerk.com), allowing
 ## Key Features
 
 - **Technology Stack:**
-  - Frontend: React
+  - Frontend: React, Tailwind, Vite
   - State Management: Context API
   - HTTP Requests: Axios
   - Authentication: Clerk with a custom signup page and form
