@@ -27,7 +27,7 @@ const ReadingCard = ({
 	const monthShort = month.substring(0, 3);
 	const priceCubicMeter = import.meta.env.VITE_PRICE_MC;
 	const formatedReadingDate = formatDate(readingDate);
-	const totalDue = Math.ceil(consumption * priceCubicMeter);
+	const totalDue = Math.ceil(consumption * priceCubicMeter) + 15;
 
 	return (
 		<>

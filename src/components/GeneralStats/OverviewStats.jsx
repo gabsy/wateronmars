@@ -39,7 +39,7 @@ const OverviewStats = ({ apartmentId }) => {
 				? filteredSortedReadings[index + 1]
 				: 0;
 		const cubicMeters = reading.reading - prevReading.reading;
-		totalDue += Math.ceil(cubicMeters * priceCubicMeter);
+		totalDue += Math.ceil(cubicMeters * priceCubicMeter) + 15;
 
 		return totalDue;
 	});
